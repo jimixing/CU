@@ -1,0 +1,91 @@
+@mixin uiconfig-textfield {
+	
+	.v-textfield{
+		@include border-radius(1px);
+		border: 1px solid #ccc;
+		background: #fff;
+		line-height: 1;
+		height:26px;
+		margin: 0;
+		transition:All 0.2s ease;
+    	-webkit-transition:All 0.2s ease;
+    	-moz-transition:All 0.2s ease;
+    	-webkit-box-shadow: inset 0 1px 1px #f1f1f1;
+    	-moz-box-shadow: inset 0 1px 1px #f1f1f1;
+    	box-shadow: inset 0 1px 1px #f1f1f1;
+	}
+	
+	input.v-widget.v-textfield{
+		padding: .25em .3em !important;
+	} 
+  
+	.v-webkit & input.v-textfield{
+		padding-bottom: .3em;	
+	}
+	.v-textfield:hover{
+		outline: none;
+		border-color: #508fcc;
+		-webkit-box-shadow: inset 0 1px 1px rgba(80,143,204,0.2);
+    	-moz-box-shadow: inset 0 1px 1px rgba(80,143,204,0.2);
+    	box-shadow: inset 0 1px 1px rgba(80,143,204,0.2);
+	}
+	.v-textfield:focus{
+		outline: none;
+		border-color: #508fcc;
+		-webkit-box-shadow: inset 0 1px 1px rgba(80,143,204,0.2);
+    	-moz-box-shadow: inset 0 1px 1px rgba(80,143,204,0.2);
+    	box-shadow: inset 0 1px 1px rgba(80,143,204,0.2);
+	}
+	
+	input.v-textfield-prompt{
+		font-style: normal;
+    	color: $prompt-text-color;
+	}
+	
+	input.v-widget.v-textfield.small{
+		padding: .15em .2em;
+		font-size: 9px;
+	}
+	
+	.v-webkit & input.v-textfield.small{
+		padding-bottom: .2em;
+	}
+
+}
+	.dashboard input.v-textfield-readonly, .dashboard textarea.v-textarea-readonly{
+		@include border-radius(1px);
+		border: 1px solid #ccc;
+		background: red;
+		/*cursor: not-allowed;*/
+		box-shadow: none;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+	}
+	.dashboard input.v-textfield-readonly:hover,
+	.dashboard input.v-textfield-readonly:focus,
+	.dashboard textarea.v-textarea-readonly:hover{
+		box-shadow: none;
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+	}
+	.v-disabled,
+	.v-checkbox-disabled,
+	.v-radiobutton-disabled{
+		cursor: not-allowed !important;
+	}
+	input{
+		/*cursor:pointer !important;*/
+	}
+	input:disabled{
+		/*cursor: not-allowed !important;*/
+	}
+	.v-disabled *{
+		cursor: not-allowed !important;
+	}
+	.v-textarea-readonly,
+	.v-textfield-readonly{
+		/*cursor: not-allowed !important;*/
+	}
+	input, textarea, keygen, select{
+		color: #666;
+	}

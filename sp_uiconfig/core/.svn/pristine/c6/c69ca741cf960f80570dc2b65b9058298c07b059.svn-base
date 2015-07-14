@@ -1,0 +1,59 @@
+package com.ebao.gs.pol.prdt.config;
+
+import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
+
+public class ConfigSectionInfo implements Serializable{
+	private String sectionTitle="";
+	private String sectionId;
+	private String sectionType;
+	private String sectionTemplate;
+	private  String description="";
+	private ConfigPageInfo page;
+	private List<ConfigFieldInfo> fieldList=new LinkedList<ConfigFieldInfo>();
+	
+	public String getSectionTitle() {
+		return sectionTitle;
+	}
+	public void setSectionTitle(String sectionTitle) {
+		this.sectionTitle = sectionTitle;
+	}
+	public List<ConfigFieldInfo> getFieldList() {
+		return fieldList;
+	}
+	public void setFieldList(List<ConfigFieldInfo> fieldList) {
+		this.fieldList = fieldList;
+	}
+	public ConfigPageInfo getPage() {
+		return page;
+	}  
+	public void setPage(ConfigPageInfo page) {
+		this.page = page;
+	}
+	public String getSectionType() {
+		return sectionType;
+	}
+	public void setSectionType(String sectionType) {
+		this.sectionType = sectionType;
+	}
+	public String getSectionTemplate() {
+		return sectionTemplate;
+	}
+	public void setSectionTemplate(String sectionTemplate) {
+		this.sectionTemplate = sectionTemplate;
+	}
+	public String getSectionId() {
+		return sectionId;
+	}
+	public void setSectionId(String sectionId) {
+		this.sectionId = sectionId;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+}

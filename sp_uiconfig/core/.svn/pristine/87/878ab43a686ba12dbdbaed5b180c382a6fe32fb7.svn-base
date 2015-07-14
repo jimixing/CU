@@ -1,0 +1,51 @@
+package com.ebao.gs.pol.constant;
+
+
+public class UIConfigExcelConstant {
+	
+	// Sheet Name Of Page & Section & Field
+	public static String SHEET_NAME_PAGE = "Page";
+	public static String SHEET_NAME_SECTION = "Section";
+	public static String SHEET_NAME_FIELD = "Field";
+	
+	public static String[] PAGE_HEADER_ARRAY = {"Page Sequence", "Page Name", "Page Description"};
+	
+	public static String[] SECTION_HEADER_ARRAY = {"Page Name", "Section Name", "Sub Section Name", "Section Sequence", "Section Title", "Type", "Section Description"};
+	
+	public static String[] FIELD_HEADER_ARRAY = {
+			// page & section & sub section attribute
+			"Page Name", "Section Name", "Sub Section Name",
+			
+			// field attribute
+			"Sequence", "Field Name", /*"Field Code",*/ "Label", "Display Type",
+			"Value Binding", "Default Value", "Colspan", "Format", "IO", "Help Text", "Empty Text", "Input Width", "Error Message", 
+			"Allow Decimals", "Decimal Precision", "Validation Group", "Min Value", "Max Value", "Min Length", "Max Length",
+			
+			"Readonly", "Required", "Visible", "Readonly Expression", "Required Expression", "Visible Expression",
+			
+			"CodeTable Table Name", "CodeTable Display Type", "CodeTable Where Clause", "CodeTable Order By", 
+			"Child Field Code", "Parent Field Code", "Foreign Key", "No Selection Load",
+			
+			"TextArea Rows", "TextArea Cols",
+			"Column Width", "Table Title Align", "Table Column Align",
+			
+			// UIC2 Component JSF event attribute
+			"Ajax Enabled", "Action", "Action Listener", "On Chagne Listener", "Update Field Ids",
+			// UIC2 Component JavaScript event attribute
+			"On Blur", "On Blur", "On Change", "On Button Click"};
+	
+	public static String[][] FIELD_BIG_DEADER_ARRAY = {
+			{"0", "Page & Section"},
+			{"3", "Basic Attribute"},
+			{"23", "Readonly & Required & Visible"},
+			{"29", "CodeTable Attribute"},
+			{"37", "TextArea Attribute & DataTable Attribute"},
+			{"42", "JSF Event"},
+			{"47", "JavaScript Event"}
+	};
+	
+	public static String[] SECTION_TYPE_ARRAY = {"Form", "Table"};
+	
+}
+
+

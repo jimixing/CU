@@ -1,0 +1,13 @@
+package com.ebao.gs.pol.prdt.config.service;
+
+import java.io.ByteArrayOutputStream;
+
+public interface UIConfigExportService {
+	
+	public void uiconfigExport(String productName) throws Exception;
+	
+	public ByteArrayOutputStream getExcelFileStream(String productName) throws Exception;
+	
+	public String getUIConfigExportFileName() ;
+	
+}

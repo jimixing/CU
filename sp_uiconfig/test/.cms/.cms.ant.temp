@@ -1,0 +1,246 @@
+temp_ant_prj_upload=<?xml version="1.0"?>
+<project name="Component Management Upload" default="upload" basedir=".">
+	<property file="${basedir}/.cms.build.properties"/>
+	<property file="../../../gs_local/.cms/.cms.build.properties"/>
+	
+	<target name="upload">
+{UPLOAD_JOBS}
+    </target>
+</project>
+;
+
+
+temp_ant_job_template_10221=
+		  <echo message="To upload: {SOURCE_PATH}"/>
+		  <echo message="Remote Path: ${_APP_SERVER_IP}${_APP_SERVER_ROOT_DIR}${_APP_SERVER_ROOT_WEB_DIR}"/>
+		  <ftp server="${_APP_SERVER_IP}"
+		       userid="${_APP_SERVER_FTP_USER}"
+		       password="${_APP_SERVER_FTP_PWD}"
+		  	   action="mkdir"
+		  	   remotedir="${_APP_SERVER_ROOT_DIR}${_APP_SERVER_ROOT_WEB_DIR}">
+		  </ftp>	
+		  <ftp server="${_APP_SERVER_IP}"
+		       userid="${_APP_SERVER_FTP_USER}"
+		       password="${_APP_SERVER_FTP_PWD}"
+		  	   action="send"
+		  	   remotedir="${_APP_SERVER_ROOT_DIR}${_APP_SERVER_ROOT_WEB_DIR}">
+			  <fileset dir="../gs_web/">
+		  		<include name="{SOURCE_PATH}"/>
+		    </fileset>
+		  </ftp>
+;
+temp_ant_job_template_1022_bak=
+		  <echo message="To Copy: {SOURCE_PATH}"/>
+		  <echo message="Remote Path: ../../../gs_local/web"/>
+		  <copy todir="../../../gs_local/web" overwrite="true">
+		  	<fileset dir="../gs_web/">
+		  		<include name="{SOURCE_PATH}"/>
+		    </fileset>
+		  </copy>
+;
+
+temp_ant_job_template_1022=/gs_web|/gs_local/web;
+
+temp_ant_job_template_10221_2=
+		  <echo message="To upload: {SOURCE_PATH}"/>
+		  <echo message="Remote Path: ${_APP_SERVER_IP}${_APP_SERVER_ROOT_DIR}${_APP_SERVER_ROOT_WEB_DIR}"/>
+		  <ftp server="${_APP_SERVER_IP}"
+		       userid="${_APP_SERVER_FTP_USER}"
+		       password="${_APP_SERVER_FTP_PWD}"
+		  	   action="mkdir"
+		  	   remotedir="${_APP_SERVER_ROOT_DIR}${_APP_SERVER_ROOT_WEB_DIR}">
+		  </ftp>	
+		  <ftp server="${_APP_SERVER_IP}"
+		       userid="${_APP_SERVER_FTP_USER}"
+		       password="${_APP_SERVER_FTP_PWD}"
+		  	   action="send"
+		  	   remotedir="${_APP_SERVER_ROOT_DIR}${_APP_SERVER_ROOT_WEB_DIR}">
+		  	<fileset dir="../html/">
+		  		<include name="{SOURCE_PATH}"/>
+		    </fileset>
+		  </ftp>
+;
+temp_ant_job_template_1022_2_bak=
+		  <echo message="To Copy: {SOURCE_PATH}"/>
+		  <echo message="Remote Path: ../../../gs_local/web"/>
+		  <copy todir="../../../gs_local/web" overwrite="true">
+		  	<fileset dir="../html/">
+		  		<include name="{SOURCE_PATH}"/>
+		    </fileset>
+		  </copy>
+;
+
+temp_ant_job_template_1022_2=/html|/gs_local/web;
+
+temp_ant_job_template_1022_2_2_bak=
+		  <echo message="To Copy: {SOURCE_PATH}"/>
+		  <echo message="Remote Path: ../../../gs_local/web"/>
+		  <copy todir="../../../gs_local/web" overwrite="true">
+		  	<fileset dir="../html/insurance/">
+		  		<include name="{SOURCE_PATH}"/>
+		    </fileset>
+		  </copy>
+;
+
+temp_ant_job_template_1022_2_2=/html/insurance|/gs_local/web;
+
+
+temp_ant_job_template_10221_3=
+		  <echo message="To upload: {SOURCE_PATH}"/>
+		  <echo message="Remote Path: ${_APP_SERVER_IP}${_APP_SERVER_ROOT_DIR}${_APP_SERVER_ROOT_CLASS_DIR}"/>
+		  <ftp server="${_APP_SERVER_IP}"
+		       userid="${_APP_SERVER_FTP_USER}"
+		       password="${_APP_SERVER_FTP_PWD}"
+		  	   action="mkdir"
+		  	   remotedir="${_APP_SERVER_ROOT_DIR}${_APP_SERVER_ROOT_CLASS_DIR}">
+		  </ftp>	
+		  <ftp server="${_APP_SERVER_IP}"
+		       userid="${_APP_SERVER_FTP_USER}"
+		       password="${_APP_SERVER_FTP_PWD}"
+		  	   action="send"
+		  	   remotedir="${_APP_SERVER_ROOT_DIR}${_APP_SERVER_ROOT_CLASS_DIR}">
+		  	<fileset dir="../bin/">
+		  		<include name="{SOURCE_PATH}"/>
+		    </fileset>
+		  </ftp>
+;
+temp_ant_job_template_1022_3_bak=
+		  <echo message="To Copy: {SOURCE_PATH}"/>
+		  <echo message="Remote Path: ../../gs_local/web/WEB-INF/classes"/>	
+		  <!--	  
+		  <delete file="../../gs_local/web/WEB-INF/bin/{SOURCE_PATH}"/>
+		  -->
+		  <copy todir="../../gs_local/web/WEB-INF/classes" overwrite="true">
+		  	<fileset dir="../bin/">
+		  		<include name="{SOURCE_PATH}"/>
+		    </fileset>
+		  </copy>
+;
+temp_ant_job_template_1022_3=/bin|/gs_local/web/WEB-INF/classes;
+
+temp_ant_job_template_1022_9=
+		  <echo message="To Copy: {SOURCE_PATH}"/>
+		  <echo message="Remote Path: ../../../gs_local/web/WEB-INF/classes"/>	
+		  <!--	  
+		  <delete file="../../../gs_local/web/WEB-INF/bin/{SOURCE_PATH}"/>
+		  -->
+		  <copy todir="../../../gs_local/web/WEB-INF/classes" overwrite="true">
+		  	<fileset dir="../">
+		  		<include name="{SOURCE_PATH}"/>
+		    </fileset>
+		  </copy>
+;
+
+
+temp_ant_job_template_10221_3_2=
+		  <echo message="To upload: {SOURCE_PATH}"/>
+		  <echo message="Remote Path: ${_APP_SERVER_IP}${_APP_SERVER_ROOT_DIR}${_APP_SERVER_ROOT_CLASS_DIR}"/>
+		  <ftp server="${_APP_SERVER_IP}"
+		       userid="${_APP_SERVER_FTP_USER}"
+		       password="${_APP_SERVER_FTP_PWD}"
+		  	   action="mkdir"
+		  	   remotedir="${_APP_SERVER_ROOT_DIR}${_APP_SERVER_ROOT_CLASS_DIR}">
+		  </ftp>	
+		  <ftp server="${_APP_SERVER_IP}"
+		       userid="${_APP_SERVER_FTP_USER}"
+		       password="${_APP_SERVER_FTP_PWD}"
+		  	   action="send"
+		  	   remotedir="${_APP_SERVER_ROOT_DIR}${_APP_SERVER_ROOT_CLASS_DIR}">
+		  	<fileset dir="../bin/">
+		  		<include name="{SOURCE_PATH}"/>
+		    </fileset>
+		  </ftp>
+;
+
+temp_ant_job_template_1022_3_2_bak=
+			 <echo message="To Copy: {SOURCE_PATH}"/>
+		  <echo message="Remote Path: ../../../gs_local/web/WEB-INF/classes"/>		  
+		  <!--	  
+		  <delete file="../../../gs_local/web/WEB-INF/bin/{SOURCE_PATH}"/>
+		  -->
+		  <copy todir="../../../gs_local/web/WEB-INF/classes" overwrite="true">
+		  	<fileset dir="../bin/">
+		  		<include name="{SOURCE_PATH}"/>
+		    </fileset>
+		  </copy>
+;
+
+temp_ant_job_template_1022_3_2=/bin|/gs_local/web/WEB-INF/classes;
+temp_ant_job_template_1022_3_3=app_config|/gs_local/web/WEB-INF/classes;
+temp_ant_job_template_1022_3_4=cloudtest|/gs_local/cloud_test;
+
+temp_ant_job_template_10221_5=
+		  <echo message="To upload: {SOURCE_PATH}"/>
+		  <echo message="Remote Path: ${_APP_SERVER_IP}${_APP_SERVER_ROOT_DIR}${_APP_SERVER_ROOT_CLASS_DIR}"/>
+		  <ftp server="${_APP_SERVER_IP}"
+		       userid="${_APP_SERVER_FTP_USER}"
+		       password="${_APP_SERVER_FTP_PWD}"
+		  	   action="mkdir"
+		  	   remotedir="${_APP_SERVER_ROOT_DIR}${_APP_SERVER_ROOT_CLASS_DIR}">
+		  </ftp>	
+		  <ftp server="${_APP_SERVER_IP}"
+		       userid="${_APP_SERVER_FTP_USER}"
+		       password="${_APP_SERVER_FTP_PWD}"
+		  	   action="send"
+		  	   remotedir="${_APP_SERVER_ROOT_DIR}${_APP_SERVER_ROOT_CLASS_DIR}">
+		  	<fileset dir="../hibernate_hbm_file_3/">
+		  		<include name="{SOURCE_PATH}"/>
+		    </fileset>
+		  </ftp>
+;
+temp_ant_job_template_1022_5=
+		  <echo message="To Copy: {SOURCE_PATH}"/>
+		  <echo message="Remote Path: ../../../gs_local/web/WEB-INF/classes"/>		  
+		  <!--	  
+		  <delete file="../../../gs_local/web/WEB-INF/bin/{SOURCE_PATH}"/>
+		  -->
+		  <copy todir="../../../gs_local/web/WEB-INF/classes" overwrite="true">
+		  	<fileset dir="../hibernate_hbm_file_3/">
+		  		<include name="{SOURCE_PATH}"/>
+		    </fileset>
+		  </copy>
+;
+
+temp_ant_job_template_10221_4=
+		  <echo message="To upload: {SOURCE_PATH}"/>
+		  <echo message="Remote Path: ${_APP_SERVER_IP}${_APP_SERVER_ROOT_DIR}${_APP_SERVER_ROOT_CLASS_DIR}/../lib"/>
+		  <ftp server="${_APP_SERVER_IP}"
+		       userid="${_APP_SERVER_FTP_USER}"
+		       password="${_APP_SERVER_FTP_PWD}"
+		  	   action="mkdir"
+		  	   remotedir="${_APP_SERVER_ROOT_DIR}${_APP_SERVER_ROOT_CLASS_DIR}">
+		  </ftp>	
+		  <ftp server="${_APP_SERVER_IP}"
+		       userid="${_APP_SERVER_FTP_USER}"
+		       password="${_APP_SERVER_FTP_PWD}"
+		  	   action="send"
+		  	   remotedir="${_APP_SERVER_ROOT_DIR}${_APP_SERVER_ROOT_CLASS_DIR}/../lib">
+		  	<fileset dir="../lib/">
+		  		<include name="{SOURCE_PATH}"/>
+		    </fileset>
+		  </ftp>
+;
+temp_ant_job_template_1022_4=
+		  <echo message="To Copy: {SOURCE_PATH}"/>
+		  <echo message="Remote Path: ../../../gs_local/web/WEB-INF/lib"/>		  
+		  <delete file="../../../gs_local/web/WEB-INF/lib/{SOURCE_PATH}"/>
+		  <copy todir="../../../gs_local/web/WEB-INF/lib" overwrite="true">
+		  	<fileset dir="../lib/">
+		  		<include name="{SOURCE_PATH}"/>
+		    </fileset>
+		  </copy>
+;
+
+
+temp_ant_job_springBean=
+		  <echo message="To Copy: {SOURCE_PATH}"/>
+		  <echo message="Remote Path: ../../../gs_local/web/WEB-INF/classes/META-INF/ACR"/>	
+		  <!--	  
+		  <delete file="../../../gs_local/web/WEB-INF/bin{SOURCE_PATH}"/>
+		  -->
+		  <copy todir="../../../gs_local/web/WEB-INF/classes/META-INF/ACR" overwrite="true">
+		  	<fileset dir="../META-INF/">
+		  		<include name="{SOURCE_PATH}"/>
+		    </fileset>
+		  </copy>
+;

@@ -1,0 +1,124 @@
+package com.ebao.gs.sp.uiconfig.test;
+
+import java.util.List;
+
+import org.junit.Test;
+import org.testng.Assert;
+
+import com.ebao.gs.common.test.GenericTestCase;
+import com.ebao.gs.pol.prdt.config.ConfigFieldInfo;
+import com.ebao.gs.pol.prdt.config.ConfigPageInfo;
+import com.ebao.gs.pol.prdt.config.ConfigSectionInfo;
+import com.ebao.gs.pol.prdt.config.dao.ConfigSqlExecuteDao;
+import com.ebao.gs.pol.prdt.config.dao.impl.ConfigSqlExecuteDaoImpl;
+import com.ebao.gs.pol.prdt.config.service.ConfigDynamicFieldService;
+import com.ebao.gs.pol.prdt.config.service.ConfigPageService;
+import com.ebao.gs.pol.prdt.config.service.ConfigSectionService;
+import com.ebao.gs.pol.prdt.config.service.impl.ConfigDynamicFieldServiceImpl;
+import com.ebao.gs.pol.prdt.config.service.impl.ConfigPageServiceImpl;
+import com.ebao.gs.pol.prdt.config.service.impl.ConfigSectionServiceImpl;
+
+public class SPUIConfigTestCase extends GenericTestCase {
+	
+	
+	@Test
+	public void savePageInfo()throws Exception{
+
+		ConfigPageInfo pageInfo=new ConfigPageInfo();
+		String pageTitle="Page"+(int)(100*Math.random()); 
+		pageInfo.setPageTitle(pageTitle); 
+		pageInfo.setProductName("Private Motor Car");
+		pageInfo.setPageDescription("this is page unit test");
+		pageInfo.setProductId(String.valueOf(1750000645));
+		ConfigPageService pageService=new ConfigPageServiceImpl();
+		pageService.addConfigPage(pageInfo, false, null);
+		
+		ConfigPageInfo dbConfigPage=pageService.getConfigPageInfoById(Integer.parseInt(pageInfo.getPageId()));
+		
+		Assert.assertEquals(dbConfigPage.getPageTitle(), pageInfo.getPageTitle());
+		
+		
+	}
+	@Test
+	public void saveSecitionInfo()throws Exception{
+		
+		ConfigPageInfo pageInfo=new ConfigPageInfo();
+		String pageTitle="Page"+(int)(100*Math.random());
+		pageInfo.setPageTitle(pageTitle);
+		pageInfo.setPageId(1000000100+"");
+		
+		
+		ConfigSectionInfo sectioInfo=new ConfigSectionInfo();
+		String sectionTitle="Section"+(int)(100*Math.random());
+		sectioInfo.setSectionTitle(sectionTitle);
+		sectioInfo.setPage(pageInfo);
+		pageInfo.getSectionList().add(sectioInfo);
+		ConfigSectionService sectionService=new ConfigSectionServiceImpl();
+		sectionService.addConfigSection(sectioInfo, false, null);
+		
+		ConfigSectionInfo dbsectioInfo =sectionService.getSectionInfoBySectionId(Integer.parseInt(sectioInfo.getSectionId()));
+		Assert.assertEquals(dbsectioInfo.getSectionTitle(), sectioInfo.getSectionTitle());
+		
+	}
+	
+	
+	
+	@Test
+	public void saveConfigFieldInfo()throws Exception{
+		ConfigFieldInfo fieldInfo=new ConfigFieldInfo();
+		
+		String fieldName="FieldName"+(int)(100*Math.random());
+		fieldInfo.setFieldName(fieldName);
+	
+		fieldInfo.setDisplayLabel("Display Label"+fieldName);
+		fieldInfo.setColspan(2);
+		fieldInfo.setCodeTabelDisplayType("2");
+		
+		fieldInfo.setFieldCode(201303);
+		fieldInfo.setReadOnly(true);
+		fieldInfo.setRequired(false);
+		fieldInfo.setTableName("T_YES_NO");
+		fieldInfo.setDefaultValue("N");
+		fieldInfo.setDisplayType("CODETABLE");
+		
+		
+		fieldInfo.setVisible(true);
+		
+		fieldInfo.setOrderBy("desc");
+		fieldInfo.setOnBlur("action when blur");
+		
+    	
+		
+		ConfigPageInfo pageInfo=new ConfigPageInfo();
+		String pageTitle="Page"+(int)(100*Math.random());
+		pageInfo.setPageTitle(pageTitle);
+		pageInfo.setPageId(1000000100+"");
+		pageInfo.setProductId(String.valueOf(1750000645));
+		 
+		ConfigSectionInfo sectioInfo=new ConfigSectionInfo();
+		String sectionTitle="Section"+(int)(100*Math.random());
+		sectioInfo.setSectionTitle(sectionTitle);
+		sectioInfo.setSectionId(1000000100+"");
+		sectioInfo.setPage(pageInfo);
+		pageInfo.getSectionList().add(sectioInfo);
+		sectioInfo.getFieldList().add(fieldInfo);
+		fieldInfo.setSection(sectioInfo);
+
+		
+		ConfigDynamicFieldService  fieldService=new    ConfigDynamicFieldServiceImpl(); 
+		fieldService.addDynamicFieldConfig(fieldInfo, 0, false);
+		
+		ConfigSqlExecuteDao dao=new ConfigSqlExecuteDaoImpl();
+		ConfigFieldInfo field=	dao.getFieldInfoBySectionId(sectioInfo).get(0);
+		Assert.assertEquals(field.getFieldName(),fieldInfo.getFieldName());
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+
+}

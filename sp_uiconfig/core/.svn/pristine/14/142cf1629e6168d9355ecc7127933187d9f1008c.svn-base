@@ -1,0 +1,751 @@
+<?xml version="1.0"?>
+<!DOCTYPE facelet-taglib PUBLIC
+  "-//Sun Microsystems, Inc.//DTD Facelet Taglib 1.0//EN"
+  "http://java.sun.com/dtd/facelet-taglib_1_0.dtd">
+
+<facelet-taglib>
+
+	<namespace>http://www.ebaotech.com/ebaoFaces</namespace>
+	
+	<function>
+		<function-name>getCodeTableDesc</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.common.CommonEventHandler
+		</function-class>
+		<function-signature>
+			java.lang.String getCodeTableDesc(java.lang.String,java.lang.String,java.lang.String)
+		</function-signature>
+	</function>
+	
+	<function>
+		<function-name>resetList</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.common.CommonEventHandler
+		</function-class>
+		<function-signature>
+			java.util.List resetList(java.util.List)
+		</function-signature>
+	</function>
+	
+	<function>
+		<function-name>getNameComponentInit</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.component.NameEventHandler
+		</function-class>
+		<function-signature>
+			java.util.List getNameComponentInit(com.ebao.gs.model.IndividualName)
+		</function-signature>
+	</function>
+	
+	<function>
+		<function-name>getFieldReadOnly</function-name>
+		<function-class>
+			 com.ebao.gs.sp.base.authority.FieldListAuthorityControl
+		</function-class>
+		<function-signature>
+			 Boolean getFieldReadOnly(java.lang.String,java.lang.String)
+		</function-signature>
+	</function>
+	
+	<function>
+		<function-name>getAddressComponentInit</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.component.AddressEventHandler
+		</function-class>
+		<function-signature>
+			java.util.List getAddressComponentInit(com.ebao.gs.model.Address)
+		</function-signature>
+	</function>
+	
+	
+	<function>
+		<function-name>getGarageComponentInit</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.component.GarageComponentHandler
+		</function-class>
+		<function-signature>
+			Boolean getGarageComponentInit()
+		</function-signature>
+	</function>
+	
+
+	<function>
+		<function-name>getPayModeConfig</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.newbiz.component.settlement.SettlementPaymentPlanEventHandler
+		</function-class>
+		<function-signature>
+			java.util.List getPayModeConfig(java.lang.Integer,java.lang.Integer)
+		</function-signature>
+	</function>
+	
+	<function>
+		<function-name>getAccountIdsOfPayer</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.newbiz.component.settlement.SettlementPaymentPlanEventHandler
+		</function-class>
+		<function-signature>
+			String getAccountIdsOfPayer(java.lang.Integer,java.lang.Integer)
+		</function-signature>
+	</function>
+	
+	<function>
+		<function-name>getBankAccountOfInsurance</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.newbiz.component.settlement.PaymentInfoEventHandler
+		</function-class>
+		<function-signature>
+			String getBankAccountOfInsurance(java.lang.Integer)
+		</function-signature>
+	</function>
+	
+	<function>
+		<function-name>isReadOnlyMode</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.common.CommonEventHandler
+		</function-class>
+		<function-signature>
+			Boolean isReadOnlyMode()
+		</function-signature>
+	</function>
+
+	<function>
+		<function-name>isInorOut</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.common.CommonEventHandler
+		</function-class>
+		<function-signature>
+			String isInorOut(java.lang.Object)
+		</function-signature>
+	</function>
+
+	<function>
+		<function-name>simpleFormatDate</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.common.CommonEventHandler
+		</function-class>
+		<function-signature>
+			String getSimpleFormatDate(java.util.Date,java.lang.String)
+		</function-signature>
+	</function>
+
+	<function>
+		<function-name>setStringName</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.common.CommonEventHandler
+		</function-class>
+		<function-signature>
+			String resetStringName(java.lang.String,java.lang.Integer)
+		</function-signature>
+	</function>
+
+	<function>
+		<function-name>switchString</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.common.CommonEventHandler
+  		</function-class>
+		<function-signature>
+			String getSwitchString(java.lang.String,java.lang.Integer)
+  		</function-signature>
+	</function>
+
+	<function>
+		<function-name>getRedoOrUndoStatus</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.common.CommonEventHandler
+		</function-class>
+		<function-signature>
+			String getRedoOrUndoStatus(java.lang.Integer,java.lang.Integer)
+		</function-signature>
+	</function>
+
+	<function>
+		<function-name>getPolicyStatus</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.common.CommonEventHandler
+		</function-class>
+		<function-signature>
+			String getPolicyStatus(java.lang.Integer,java.lang.Integer)
+		</function-signature>
+	</function>
+
+	<function>
+		<function-name>realUsername</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.jsf.WebTierEscapeUtils
+		</function-class>
+		<function-signature>
+			String getRealUsername(java.lang.String)
+		</function-signature>
+	</function>
+
+	<function>
+		<function-name>getCoverageGroup</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.newbiz.component.coverplan.CoverPlanFunction
+		</function-class>
+		<function-signature>
+			ProductPlanCoverageGroupForm getCoverageGroup(com.ebao.gs.product.model.ProductCoverageGroup,com.ebao.gs.pa.uimodel.ProductPlanForm)
+		</function-signature>
+	</function>
+
+	<function>
+		<function-name>getCoverageInGroup</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.newbiz.component.coverplan.CoverPlanFunction
+		</function-class>
+		<function-signature>
+			ProductPlanCoverageTypeForm getCoverageInGroup(com.ebao.gs.product.model.ProductCoverageGroup,com.ebao.gs.product.model.ProductCoverageType,com.ebao.gs.pa.uimodel.ProductPlanForm)
+		</function-signature>
+	</function>
+
+	<function>
+		<function-name>getCoverage</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.newbiz.component.coverplan.CoverPlanFunction
+		</function-class>
+		<function-signature>
+			ProductPlanCoverageTypeForm getCoverage(com.ebao.gs.product.model.ProductCoverageType,com.ebao.gs.pa.uimodel.ProductPlanForm)
+		</function-signature>
+	</function>
+	
+	<function>
+		<function-name>getPlanCoverageFromGroup</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.newbiz.component.coverplan.CoverPlanFunction
+		</function-class>
+		<function-signature>
+			ProductPlanCoverageTypeForm getPlanCoverageFromGroup(com.ebao.gs.product.model.ProductCoverageType,com.ebao.gs.pa.uimodel.ProductPlanCoverageGroupForm)
+		</function-signature>
+	</function>
+
+	<function>
+		<function-name>getInterest</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.newbiz.component.coverplan.CoverPlanFunction
+		</function-class>
+		<function-signature>
+			ProductPlanInterestForm getInterest(com.ebao.gs.product.model.ProductCoverageType,com.ebao.gs.product.model.ProductInterest,com.ebao.gs.pa.uimodel.ProductPlanForm)
+		</function-signature>
+	</function>
+
+	<function>
+		<function-name>getFullLimit</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.newbiz.component.coverplan.CoverPlanFunction
+		</function-class>
+		<function-signature>
+			String getFullLimit(com.ebao.gs.product.model.Indemnity)
+		</function-signature>
+	</function>
+	
+	<function>
+		<function-name>getFullLimitDeductible</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.newbiz.component.coverplan.CoverPlanFunction
+		</function-class>
+		<function-signature>
+			String getFullLimitDeductible(java.util.List)
+		</function-signature>
+	</function>
+
+	<function>
+		<function-name>getFullDeductible</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.newbiz.component.coverplan.CoverPlanFunction
+		</function-class>
+		<function-signature>
+			String getFullDeductible(com.ebao.gs.product.model.Indemnity)
+		</function-signature>
+	</function>
+
+	<function>
+		<function-name>checkIfFullCoverage</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.newbiz.component.coverplan.CoverPlanFunction
+		</function-class>
+		<function-signature>
+			Boolean checkIfFullCoverage(com.ebao.gs.product.model.ProductCoverageGroup,com.ebao.gs.product.model.ProductCoverageType,com.ebao.gs.pa.uimodel.ProductPlanForm)
+		</function-signature>
+	</function>
+
+
+	<function>
+		<function-name>getLimitOptions</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.newbiz.component.coverplan.CoverPlanFunction
+		</function-class>
+		<function-signature>
+			java.util.List getLimitOptions(com.ebao.gs.pa.uimodel.LimitValueForm)
+		</function-signature>
+	</function>
+
+	<function>
+		<function-name>getDeductibleOptions</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.newbiz.component.coverplan.CoverPlanFunction
+		</function-class>
+		<function-signature>
+			java.util.List getDeductibleOptions(com.ebao.gs.pa.uimodel.DeductibleValueForm)
+		</function-signature>
+	</function>
+	
+	
+	
+	<function>
+		<function-name>getCurrentLimitStr</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.newbiz.component.coverplan.CoverPlanFunction
+		</function-class>
+		<function-signature>
+			String getCurrentLimitStr(com.ebao.gs.pa.uimodel.LimitValueForm)
+		</function-signature>
+	</function>
+	
+	
+	<function>
+		<function-name>getCurrentDeductibleStr</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.newbiz.component.coverplan.CoverPlanFunction
+		</function-class>
+		<function-signature>
+			String getCurrentDeductibleStr(com.ebao.gs.pa.uimodel.DeductibleValueForm)
+		</function-signature>
+	</function>
+	
+	<function>
+		<function-name>getProdctStyle</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.landingPage.ProductGalleryEventHandler
+		</function-class>
+		<function-signature>
+			String getProdctStyle(java.lang.String)
+		</function-signature>
+	</function>
+	
+	<function>
+		<function-name>typeOfSubTerm</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.newbiz.component.coverplan.CoverPlanFunction
+		</function-class>
+		<function-signature>
+			java.lang.Integer typeOfSubTerm(java.lang.String)
+		</function-signature>
+	</function>
+	
+	<function>
+		<function-name>valueTypeOfLimitValue</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.newbiz.component.coverplan.CoverPlanFunction
+		</function-class>
+		<function-signature>
+			java.lang.Integer valueTypeOfLimitValue(java.lang.String,java.util.List)
+		</function-signature>
+	</function>
+	
+	<function>
+		<function-name>valueTypeOfDeductibleValue</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.newbiz.component.coverplan.CoverPlanFunction
+		</function-class>
+		<function-signature>
+			java.lang.Integer valueTypeOfDeductibleValue(java.lang.String,java.util.List)
+		</function-signature>
+	</function>
+	
+	<function>
+		<function-name>getSelectedCoverPlanPremium</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.newbiz.component.coverplan.CoverPlanFunction
+		</function-class>
+		<function-signature>
+			java.math.BigDecimal getSelectedCoverPlanPremium()
+		</function-signature>
+	</function>
+	
+	<!-- add by jason for CRDB00889988 -->
+	<function>
+		<function-name>premiumRender</function-name>
+		<function-class>com.ebao.gs.sp.base.common.PolicyRenderController</function-class>
+		<function-signature>boolean premiumRender(com.ebao.gs.pa.model.Policy)</function-signature>
+	</function>
+	
+	<function>
+		<function-name>getPlanVersion</function-name>
+		<function-class>
+			com.ebao.gs.sp.base.newbiz.component.coverplan.CoverPlanFunction
+		</function-class>
+		<function-signature>
+			java.lang.String getPlanVersion(com.ebao.gs.pa.uimodel.ProductPlanForm)
+		</function-signature>
+	</function>
+
+	<tag>
+		<tag-name>driverName</tag-name>
+		<source>../../gs/base/newbiz/lob/auto/component/driverName/driverName.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>vehicleModel</tag-name>
+		<source>../../gs/base/newbiz/lob/auto/component/vehicleModel/vehicleModel.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>singlePersonInsured</tag-name>
+		<source>../../gs/base/newbiz/component/personInsured/singlePersonInsured.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>multiplePersonInsured</tag-name>
+		<source>../../gs/base/newbiz/component/personInsured/multiplePersonInsured.xhtml</source>
+	</tag>
+	
+    <tag>
+		<tag-name>multipleAddressInsured</tag-name>
+		<source>../../gs/base/newbiz/component/addressInsured/multipleAddressInsured.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>personInsuredList</tag-name>
+		<source>../../gs/base/endo/component/personInsured/personInsuredList.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>indCustomerSearch</tag-name>
+		<source>../../gs/base/newbiz/component/policyHolder/indCustomerSearch.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>orgCustomerSearch</tag-name>
+		<source>../../gs/base/newbiz/component/policyHolder/orgCustomerSearch.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>salesChannelSearch</tag-name>
+		<source>../../gs/base/newbiz/component/salesChannel/salesChannelSearch.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>policyPeriod</tag-name>
+		<source>../../gs/base/newbiz/component/policyPeriod/policyPeriod.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>vehicleInfo</tag-name>
+		<source>../../gs/base/newbiz/lob/auto/component/vehicleInfo/vehicleInfo.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>garageInfo</tag-name>
+		<source>../../gs/base/newbiz/lob/auto/component/garageInfo/garageInfo.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>vehicleInfoSPPC</tag-name>
+		<source>../../gs/base/newbiz/product/auto/sppc/component/vehicleInfo/vehicleInfo.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>driverInfo</tag-name>
+		<source>../../gs/base/newbiz/lob/auto/component/driverInfo/driverInfo.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>primaryDriver</tag-name>
+		<source>../../gs/base/newbiz/lob/auto/component/driverInfo/primaryDriver/primaryDriver.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>additionalDriver</tag-name>
+		<source>../../gs/base/newbiz/lob/auto/component/driverInfo/additionalDriver/additionalDriver.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>addressInfo</tag-name>
+		<source>../../gs/base/newbiz/lob/home/component/addressDetails/addressDetails.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>addressInsuredList</tag-name>
+		<source>../../gs/base/endo/lob/home/component/addressInsured/addressInsuredList.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>questionnaire</tag-name>
+		<source>../../gs/base/newbiz/component/questionnaire/questionnaire.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>coverPlan</tag-name>
+		<source>../../gs/base/newbiz/component/coverPlan/coverPlan.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>insuredCoverPlan</tag-name>
+		<source>../../gs/base/newbiz/component/coverPlan/coverPlanWithInsured.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>endoInfo</tag-name>
+		<source>../../gs/base/endo/component/endoInfo/endoInfo.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>vehicleList</tag-name>
+		<source>../../gs/base/endo/component/vehicleList/vehicleList.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>endoContents</tag-name>
+		<source>../../gs/base/endo/component/endoContents/endoContents.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>deliveryInfo</tag-name>
+		<source>../../gs/base/newbiz/component/deliveryInfo/deliveryInfo.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>indPolicyHolder</tag-name>
+		<source>../../gs/base/newbiz/component/policyHolder/indPolicyHolder.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>policyHolder</tag-name>
+		<source>../../gs/base/newbiz/component/policyHolder/policyHolder.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>policyHolderIdentifier</tag-name>
+		<source>../../gs/base/newbiz/component/policyHolderIdentifier/policyHolderIdentifier.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>orgPolicyHolder</tag-name>
+		<source>../../gs/base/newbiz/component/policyHolder/orgPolicyHolder.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>insuredPerson</tag-name>
+		<source>../../gs/base/newbiz/component/insuredPerson/insuredPerson.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>indInsuredPerson</tag-name>
+		<source>../../gs/base/newbiz/component/insuredPerson/indInsuredPerson.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>orgInsuredPerson</tag-name>
+		<source>../../gs/base/newbiz/component/insuredPerson/orgInsuredPerson.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>payMode</tag-name>
+		<source>../../gs/base/newbiz/component/settlement/payMode.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>paymentDetails</tag-name>
+		<source>../../gs/base/query/policy/view/paymentDetails.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>simplePaymentPlan</tag-name>
+		<source>../../gs/base/newbiz/component/settlement/simplePaymentPlan.xhtml</source>
+	</tag>
+
+    <tag>
+		<tag-name>settlementInfo</tag-name>
+		<source>../../gs/base/newbiz/component/settlement/settlementInfo.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>multiplePayerPaymentPlan</tag-name>
+		<source>../../gs/base/newbiz/component/settlement/multiplePayerPaymentPlan.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>singlePayer</tag-name>
+		<source>../../gs/base/newbiz/component/settlement/payer/singlePayer.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>multiplePayer</tag-name>
+		<source>../../gs/base/newbiz/component/settlement/payer/multiplePayer.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>policyInformation</tag-name>
+		<source>../../gs/base/newbiz/component/policyInformation/policyInformation.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>coverNoteInformation</tag-name>
+		<source>../../gs/base/newbiz/component/coverNoteInformation/coverNoteInformation.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>endoCoverNoteInformation</tag-name>
+		<source>../../gs/base/newbiz/component/coverNoteInformation/endoCoverNoteInformation.xhtml</source>
+	</tag>
+	
+
+	<tag>
+		<tag-name>beneficiary</tag-name>
+		<source>../../gs/base/newbiz/component/beneficiary/beneficiary.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>addressInsuredBeneficiary</tag-name>
+		<source>../../gs/base/newbiz/component/beneficiary/addressInsured/addressInsuredBeneficiary.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>personInsuredBeneficiary</tag-name>
+		<source>../../gs/base/newbiz/component/beneficiary/personInsured/personInsuredBeneficiary.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>dcaInfo</tag-name>
+		<source>../../gs/base/newbiz/component/dca/dcaInfo.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>ncd</tag-name>
+		<source>../../gs/base/newbiz/lob/auto/component/NCDDetails.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>previousPolicyInfo</tag-name>
+		<source>../../gs/base/renew/component/prePolicyInfo.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>UWCommentsHistory</tag-name>
+		<source>../../gs/base/newbiz/component/UWCommentsHistory/UWCommentsHistory.xhtml</source>
+	</tag>
+	<tag>
+		<tag-name>pendingClaim</tag-name>
+		<source>../../gs/base/endo/component/pendingClaim/pendingClaim.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>poiMove</tag-name>
+		<source>../../gs/base/endo/component/poiMove/poiMove.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>poiExtension</tag-name>
+		<source>../../gs/base/endo/component/poiExtension/poiExtension.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>name</tag-name>
+		<source>../../gs/base/newbiz/component/name/name.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>address</tag-name>
+		<source>../../gs/base/newbiz/component/address/address.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>documentList</tag-name>
+		<source>../../gs/base/newbiz/component/document/documentList.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>mandatoryDocumentList</tag-name>
+		<source>../../gs/base/newbiz/component/document/mandatoryDocumentList.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>uploadDocument</tag-name>
+		<source>../../gs/base/newbiz/component/document/uploadDocument.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>interestedPlan</tag-name>
+		<source>../../gs/base/newbiz/component/interestedPlan/interestedPlan.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>contactInfo</tag-name>
+		<source>../../gs/base/newbiz/component/contact/contact.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>customerContactInfo</tag-name>
+		<source>../../gs/base/newbiz/component/contact/contact.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>customerAddressInfo</tag-name>
+		<source>../../gs/base/newbiz/component/address/addressInfo.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>captchaInfo</tag-name>
+		<source>../../gs/base/common/captcha.xhtml</source>
+	</tag>
+
+	<tag>
+		<tag-name>premiumInfo</tag-name>
+		<source>../../gs/base/newbiz/component/premiumInformation/premiumInfo.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>endoPremiumInfo</tag-name>
+		<source>../../gs/base/endo/component/premiumInformation/endoPremiumInfo.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>paymentInfo</tag-name>
+		<source>../../gs/base/newbiz/component/payment/paymentInfo.xhtml</source>
+	</tag>
+	
+	<!-- No plan coverage Component -->
+	<tag>
+		<tag-name>noPlanCoverage</tag-name>
+		<source>../../gs/base/newbiz/component/coverage/main.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>changePaymentInfo</tag-name>
+		<source>../../gs/base/endo/component/settlement/changePaymentInfo.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>rePlanPaymentInfo</tag-name>
+		<source>../../gs/base/endo/component/settlement/rePlan/rePlanPaymentInfo.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>reviewExcess</tag-name>
+		<source>../../gs/base/newbiz/component/excess/excessSummary.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>getPayerDialog</tag-name>
+		<source>../../gs/base/newbiz/component/settlement/payer/getPayerDialog.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>discountAndCampaign</tag-name>
+		<source>../../gs/base/newbiz/component/discountAndCampaign/discountAndCampaign.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>discountAndCampaignView</tag-name>
+		<source>../../gs/base/newbiz/component/discountAndCampaign/discountAndCampaignView.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>twistingPolicyResult</tag-name>
+		<source>../../gs/base/newbiz/component/twistingPolicyResult/twistingPolicyResult.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>multipleAddPayerDialog</tag-name>
+		<source>../../gs/base/newbiz/component/settlement/payer/multipleAddPayerDialog.xhtml</source>
+	</tag>
+	
+	<tag>
+		<tag-name>ncdInfo</tag-name>
+		<source>../../gs/base/newbiz/component/ncdInformation/NCDInformation.xhtml</source>
+	</tag>
+	
+	
+</facelet-taglib>
+
+

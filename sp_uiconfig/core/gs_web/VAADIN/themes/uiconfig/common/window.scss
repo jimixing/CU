@@ -1,0 +1,77 @@
+@mixin uiconfig-window {
+	
+	.v-window {
+		@include fade-in;
+		@include box-shadow(0 4px 20px rgba(0,0,0,.5));
+	}
+	.v-shadow-window {
+		display: none;
+	}
+	.v-ie8 & .v-shadow-window {
+		display: block;
+	}
+	.v-window-closebox:before {
+		font-family: 'FontAwesome';
+    	content: "\f00d";
+	}
+	.v-window-closebox {
+		background: #343638;
+		color: #ddd;
+		font-size: 16px;
+		font-weight: normal;
+		line-height: 20px;
+		text-align: center;
+		width: 20px;
+		height: 20px;
+		@include border-radius(2px);
+		top: 10px;
+		right: 10px;
+	}
+	.v-window-closebox:hover {
+		color: #fff;
+	}
+	.v-window-closebox:active {
+		color: #ddd;
+		background: #000;
+	}
+	.v-window-outerheader {
+		padding: 0.5em 20px;
+		height: 1.9em;
+		font-weight: 300;
+		font-size: 20px;
+	}
+	.v-window-header {
+		font-weight: inherit;
+	}
+	
+	//set border style for div in window
+	.setborder .v-window-contents > div{
+		border-top:1px solid;
+		border-bottom:1px solid;
+	}
+
+    .v-window-outerheader {
+      padding: 0;
+      color: #fff;
+      font-size: 14px;
+      line-height: 1;
+    }
+  
+    .v-window-header {
+      font-weight: normal;
+      overflow: visible;
+    }
+  
+    .v-window-footer {
+      height: 0;
+    }
+    
+    .v-window-export .v-window-outerheader {
+      padding: 0;
+      color: #fff;
+      font-size: 14px;
+      line-height: 1;
+      display: none;
+    }
+	
+}

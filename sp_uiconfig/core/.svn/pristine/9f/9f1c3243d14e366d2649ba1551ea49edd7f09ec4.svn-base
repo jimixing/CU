@@ -1,0 +1,10 @@
+package com.ebao.gs.pol.prdt.config.service;
+
+import com.ebao.gs.pol.prdt.config.ConfigFieldInfo;
+
+public interface ConfigDynamicFieldService {
+
+	public void addDynamicFieldConfig(ConfigFieldInfo fieldInfo,int sequence,boolean isUpdate)throws Exception;
+	public void deleteDynamicFieldConfig(ConfigFieldInfo fieldInfo)throws Exception;
+}
+  

@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<project name="Component Management Upgrade Main" default="refresh_local_dev" basedir=".">
+    <property name="cms.server.url" value="http://172.16.9.109/CMS/"/>
+    <property name="local.project.path" value="D:/GS39X_HOME/GS_SRC/GS_SRC/sp_uiconfig/core"/>
+	<property name="local.plugin.path" value="D:/GS39X_HOME/eclipse-jee-kepler-win32(EDS2.0)/plugins/com.ebao.eds_2.0.5.201411211018"/>
+    <property name="base.project.name" value="gs_3.9.x"/>
+    
+    <property name="local.project.path.RemoteSystemsTempFiles" value="D:/GS39X_HOME/GS_SRC/GS_SRC/RemoteSystemsTempFiles"/>
+    <property name="local.project.path.Servers" value="D:/GS39X_HOME/GS_SRC/GS_SRC/Servers"/>
+    <property name="local.project.path.agent_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/agent/core"/>
+    <property name="local.project.path.agent_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/agent/service-noncore"/>
+    <property name="local.project.path.agent_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/agent/web-noncore"/>
+    <property name="local.project.path.ant_build" value="D:/GS39X_HOME/GS_SRC/GS_SRC/ant_build"/>
+    <property name="local.project.path.app_config" value="D:/GS39X_HOME/GS_SRC/GS_SRC/app_config"/>
+    <property name="local.project.path.application" value="D:/GS39X_HOME/GS_SRC/GS_SRC/application"/>
+    <property name="local.project.path.bcp_service_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/bcp_service/core"/>
+    <property name="local.project.path.bcp_service_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/bcp_service/service-noncore"/>
+    <property name="local.project.path.bizpub_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/bizpub/core"/>
+    <property name="local.project.path.bizpub_service_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/bizpub_service/core"/>
+    <property name="local.project.path.bizpub_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/bizpub/service-noncore"/>
+    <property name="local.project.path.bizpub_service_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/bizpub_service/service-noncore"/>
+    <property name="local.project.path.bizpub_service_test" value="D:/GS39X_HOME/GS_SRC/GS_SRC/bizpub_service/test"/>
+    <property name="local.project.path.bizpub_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/bizpub/web-noncore"/>
+    <property name="local.project.path.cloud_test" value="D:/GS39X_HOME/GS_SRC/GS_SRC/cloud_test"/>
+    <property name="local.project.path.covernotes_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/covernotes/core"/>
+    <property name="local.project.path.covernotes_service_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/covernotes_service/core"/>
+    <property name="local.project.path.covernotes_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/covernotes/service-noncore"/>
+    <property name="local.project.path.covernotes_test" value="D:/GS39X_HOME/GS_SRC/GS_SRC/covernotes/test"/>
+    <property name="local.project.path.covernotes_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/covernotes/web-noncore"/>
+    <property name="local.project.path.dbscript" value="D:/GS39X_HOME/GS_SRC/GS_SRC/dbscript"/>
+    <property name="local.project.path.endo_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/endo/core"/>
+    <property name="local.project.path.endo_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/endo/service-noncore"/>
+    <property name="local.project.path.endo_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/endo/web-noncore"/>
+    <property name="local.project.path.finance_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/finance/core"/>
+    <property name="local.project.path.finance_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/finance/service-noncore"/>
+    <property name="local.project.path.finance_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/finance/web-noncore"/>
+    <property name="local.project.path.gc_common_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/gc_common/core"/>
+    <property name="local.project.path.gc_common_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/gc_common/service-noncore"/>
+    <property name="local.project.path.gc_common_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/gc_common/web-noncore"/>
+    <property name="local.project.path.gc_lib" value="D:/GS39X_HOME/GS_SRC/GS_SRC/gc_lib"/>
+    <property name="local.project.path.gc_service_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/gc_service/core"/>
+    <property name="local.project.path.gc_service_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/gc_service/service-noncore"/>
+    <property name="local.project.path.gs_local" value="D:/GS39X_HOME/GS_SRC/GS_SRC/gs_local"/>
+    <property name="local.project.path.gs_service_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/gs_service/core"/>
+    <property name="local.project.path.gs_service_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/gs_service/service-noncore"/>
+    <property name="local.project.path.gs_service_test" value="D:/GS39X_HOME/GS_SRC/GS_SRC/gs_service/test"/>
+    <property name="local.project.path.gspc_lib" value="D:/GS39X_HOME/GS_SRC/GS_SRC/gspc_lib"/>
+    <property name="local.project.path.gspub_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/gspub/core"/>
+    <property name="local.project.path.gspub_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/gspub/service-noncore"/>
+    <property name="local.project.path.gspub_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/gspub/web-noncore"/>
+    <property name="local.project.path.integration_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/integration/core"/>
+    <property name="local.project.path.integration_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/integration/service-noncore"/>
+    <property name="local.project.path.integration_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/integration/web-noncore"/>
+    <property name="local.project.path.issue_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/issue/core"/>
+    <property name="local.project.path.issue_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/issue/service-noncore"/>
+    <property name="local.project.path.issue_test" value="D:/GS39X_HOME/GS_SRC/GS_SRC/issue/test"/>
+    <property name="local.project.path.issue_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/issue/web-noncore"/>
+    <property name="local.project.path.letter_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/letter/core"/>
+    <property name="local.project.path.letter_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/letter/service-noncore"/>
+    <property name="local.project.path.letter_test" value="D:/GS39X_HOME/GS_SRC/GS_SRC/letter/test"/>
+    <property name="local.project.path.letter_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/letter/web-noncore"/>
+    <property name="local.project.path.ltp_adapt_service_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/ltp_adapt_service/core"/>
+    <property name="local.project.path.ltp_adapt_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/ltp_adapt/service-noncore"/>
+    <property name="local.project.path.ltp_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/ltp/core"/>
+    <property name="local.project.path.ltp_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/ltp/service-noncore"/>
+    <property name="local.project.path.ltp_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/ltp/web-noncore"/>
+    <property name="local.project.path.ncd_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/ncd/core"/>
+    <property name="local.project.path.ncd_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/ncd/service-noncore"/>
+    <property name="local.project.path.ncd_test" value="D:/GS39X_HOME/GS_SRC/GS_SRC/ncd/test"/>
+    <property name="local.project.path.ncd_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/ncd/web-noncore"/>
+    <property name="local.project.path.newbiz_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/newbiz/core"/>
+    <property name="local.project.path.newbiz_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/newbiz/service-noncore"/>
+    <property name="local.project.path.newbiz_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/newbiz/web-noncore"/>
+    <property name="local.project.path.pa" value="D:/GS39X_HOME/GS_SRC/GS_SRC/pa/function-library"/>
+    <property name="local.project.path.pa_package" value="D:/GS39X_HOME/GS_SRC/GS_SRC/pa_package/core"/>
+    <property name="local.project.path.pa_service_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/pa_service/core"/>
+    <property name="local.project.path.pa_service_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/pa_service/service-noncore"/>
+    <property name="local.project.path.party_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/party/core"/>
+    <property name="local.project.path.party_service_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/party_service/core"/>
+    <property name="local.project.path.party_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/party/service-noncore"/>
+    <property name="local.project.path.party_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/party/web-noncore"/>
+    <property name="local.project.path.polpub_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/polpub/core"/>
+    <property name="local.project.path.polpub_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/polpub/service-noncore"/>
+    <property name="local.project.path.polpub_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/polpub/web-noncore"/>
+    <property name="local.project.path.product_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/product/core"/>
+    <property name="local.project.path.product_mgmt_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/product_mgmt/core"/>
+    <property name="local.project.path.product_mgmt_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/product_mgmt/service-noncore"/>
+    <property name="local.project.path.product_mgmt_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/product_mgmt/web-noncore"/>
+    <property name="local.project.path.product_service_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/product_service/core"/>
+    <property name="local.project.path.product_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/product/service-noncore"/>
+    <property name="local.project.path.product_service_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/product_service/service-noncore"/>
+    <property name="local.project.path.product_service_test" value="D:/GS39X_HOME/GS_SRC/GS_SRC/product_service/test"/>
+    <property name="local.project.path.product_test" value="D:/GS39X_HOME/GS_SRC/GS_SRC/product/test"/>
+    <property name="local.project.path.product_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/product/web-noncore"/>
+    <property name="local.project.path.query_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/query/core"/>
+    <property name="local.project.path.query_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/query/service-noncore"/>
+    <property name="local.project.path.query_test" value="D:/GS39X_HOME/GS_SRC/GS_SRC/query/test"/>
+    <property name="local.project.path.query_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/query/web-noncore"/>
+    <property name="local.project.path.renewal_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/renewal/core"/>
+    <property name="local.project.path.renewal_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/renewal/service-noncore"/>
+    <property name="local.project.path.renewal_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/renewal/web-noncore"/>
+    <property name="local.project.path.report_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/report/core"/>
+    <property name="local.project.path.report_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/report/service-noncore"/>
+    <property name="local.project.path.report_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/report/web-noncore"/>
+    <property name="local.project.path.ri_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/ri/core"/>
+    <property name="local.project.path.ri_service_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/ri_service/core"/>
+    <property name="local.project.path.ri_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/ri/service-noncore"/>
+    <property name="local.project.path.ri_service_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/ri_service/service-noncore"/>
+    <property name="local.project.path.ri_service_test" value="D:/GS39X_HOME/GS_SRC/GS_SRC/ri_service/test"/>
+    <property name="local.project.path.ri_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/ri/web-noncore"/>
+    <property name="local.project.path.sc_service_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/sc_service/core"/>
+    <property name="local.project.path.sc_service_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/sc_service/service-noncore"/>
+    <property name="local.project.path.sc_service_test" value="D:/GS39X_HOME/GS_SRC/GS_SRC/sc_service/test"/>
+    <property name="local.project.path.sp_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/sp/core"/>
+    <property name="local.project.path.sp_lib" value="D:/GS39X_HOME/GS_SRC/GS_SRC/sp_lib"/>
+    <property name="local.project.path.sp_uiconfig_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/sp_uiconfig/core"/>
+    <property name="local.project.path.sp_uiconfig_test" value="D:/GS39X_HOME/GS_SRC/GS_SRC/sp_uiconfig/test"/>
+    <property name="local.project.path.sp_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/sp/web-noncore"/>
+    <property name="local.project.path.survey_core" value="D:/GS39X_HOME/GS_SRC/GS_SRC/survey/core"/>
+    <property name="local.project.path.survey_service_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/survey/service-noncore"/>
+    <property name="local.project.path.survey_web_noncore" value="D:/GS39X_HOME/GS_SRC/GS_SRC/survey/web-noncore"/>
+    <property name="local.project.path.unit_test" value="D:/GS39X_HOME/GS_SRC/GS_SRC/unit_test"/>
+    <property name="local.project.path.unittest" value="D:/GS39X_HOME/GS_SRC/GS_SRC/unittest"/>
+	
+	
+	<import file="cms.refresh.local.dev.xml"/>
+    
+	
+	<!--
+	<target name="refresh"/>
+	-->
+	
+	<echo message="To Refresh Local Dev for ${local.project.path}"/>
+	<target name="refresh_local_dev" depends="refresh">
+		 <echo message="Local dev refresh finished"/>		
+    </target>	
+</project>

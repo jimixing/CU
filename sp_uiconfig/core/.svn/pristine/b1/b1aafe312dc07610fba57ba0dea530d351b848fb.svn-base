@@ -1,0 +1,18 @@
+package com.ebao.gs.pol.prdt.config.service.impl;
+
+import com.ebao.gs.pol.prdt.config.dao.ConfigSqlExecuteDao;
+import com.ebao.gs.pol.prdt.config.dao.impl.ConfigSqlExecuteDaoImpl;
+import com.ebao.gs.pol.prdt.config.service.UIConfigImportService;
+
+public class UIConfigImportServiceImpl implements UIConfigImportService {
+	
+	private ConfigSqlExecuteDao configSqlExecuteDao = new ConfigSqlExecuteDaoImpl();
+	
+	@Override
+	public void uiconfigImport(String productName) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
+

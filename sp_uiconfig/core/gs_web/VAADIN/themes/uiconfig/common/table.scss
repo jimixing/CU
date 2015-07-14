@@ -1,0 +1,264 @@
+@mixin uiconfig-table {
+
+ .no-scrollable{
+	.v-scrollable{
+		overflow-x:hidden;
+	}
+}
+  //basic style of table
+  .v-table-resizer{
+		position: relative;
+		right: -4px;
+		width:8px !important;
+		background: transparent;
+		height: 27px;
+		float: right; 
+		margin-left: -8px;
+		visibility: visible;
+    }
+    
+	.v-table-header-wrap,
+	.v-table-footer-wrap {
+		border: 1px solid #dfdfdf;
+		background: #eeeeee;
+		background: -moz-linear-gradient(top, #f9f9f9 0%, #eeeeee 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9f9f9), color-stop(100%,#eeeeee));
+		background: -webkit-linear-gradient(top, #f9f9f9 0%,#eeeeee 100%);
+		background: -o-linear-gradient(top, #f9f9f9 0%,#eeeeee 100%);
+		background: -ms-linear-gradient(top, #f9f9f9 0%,#eeeeee 100%);
+	}
+	.v-table-body {
+		border: 1px solid #dfdfdf;
+		font-size: 12px;
+	}
+	.v-table-header td,
+	.v-table-body td,
+	.v-table-footer td{
+		padding:0;
+		color:#666;
+	}
+	.v-table-header-wrap {
+		border-bottom: 0px solid red;
+	}
+	.v-table-footer-wrap {
+		border-top: none;
+	}	
+	.v-table-footer td {
+		border: none;
+		border-left: 0px solid red;
+	}	
+	.v-table-footer td:first-child {
+		border: none;
+	}	
+	.v-table-footer-container {
+		padding: .1em 0 .1em 6px;
+		float: none;
+		font-size: 13px;
+		color: #979699;
+		text-shadow: 0 .1em rgba(255,255,255,.7);
+	}	
+	.v-table-footer td:first-child .v-table-footer-container {
+		padding-left: 14px;
+		@include box-sizing(border-box);
+	}	
+	.v-table-footer td:last-child .v-table-footer-container {
+		padding-right: 6px;
+		@include box-sizing(border-box);
+	}
+	.v-table-header-cell{
+		padding:0;
+		height: auto;
+		position: relative;
+		visibility: visible;
+		color:#666;
+	}
+	.v-table-header td:first-child .v-table-caption-container {
+		border-left-color: transparent;
+	}	
+	.v-table-header td:last-child .v-table-caption-container {
+		padding-right: 0px;
+	}
+	.v-table-caption-container{
+		font-size: 12px;
+		font-weight: bold;
+		text-shadow: 0 1px 0 rgba(255,255,255,1);
+		margin-left: 0;
+		padding-left: 10px;
+		padding-right: 10px;
+		padding-top: 6px;
+		padding-bottom: 6px;
+		border-left: 1px solid #dfdfdf;
+		@include box-sizing(border-box);
+	}
+	.v-table-header-cell-asc,
+	.v-table-header-cell-desc{
+	}
+	.v-table-sort-indicator{
+		width: 0;
+	}
+	.v-table-header-cell-asc .v-table-sort-indicator,
+	.v-table-header-cell-desc .v-table-sort-indicator {
+		background:transparent;
+		visibility: visible;
+		width: 10px;
+		height: 25px;
+		margin-left: -10px;
+		font-size: 13px;
+		line-height: 25px;
+		text-shadow: 0 1px 0 rgba(255,255,255,1);
+		padding-right: 5px;
+		float: right;
+	}	
+	.v-table-header-cell-asc .v-table-sort-indicator:before,
+	.v-table-header-cell-desc .v-table-sort-indicator:before {
+		font-family:'FontAwesome' !important;
+    	font-size:12px;
+    	text-align: center;
+		content: "\f0d7";
+		font-style: normal;
+		font-weight: normal;
+		speak: none;
+		display: inline-block;
+		vertical-align: middle;
+	}	
+	.v-table-header-cell-asc .v-table-sort-indicator:before {
+		content: '\f0d7';
+	}	
+	.v-table-header-cell-desc .v-table-sort-indicator:before {
+		content: '\f0d8';
+	}		
+	.v-table-caption-container-align-left{
+    }
+	.v-table-caption-container-align-right {
+	}
+	.v-table-cell-content {
+		border: none;
+		border-left: 1px solid #dfdfdf;
+		border-bottom: 1px solid #dfdfdf;
+		padding:0;
+		height: auto;
+		padding-top: 6px;
+		padding-bottom: 6px;
+		/*line-height: 25px;*/
+		color:#666;
+		text-shadow:0 1px 0 rgba(255,255,255,1);
+	}
+	.v-table-table tr:last-child td.v-table-cell-content{
+		border-bottom: 0px;
+	} 
+	.v-table-cell-content .v-table-cell-wrapper {
+		@include box-sizing(border-box);
+		padding-left:10px;
+		padding-right: 10px;
+		line-height: 25px;
+	}	
+	.v-table-body .v-table-cell-content:first-child {
+		border-left:none;
+		padding-left: 1px;
+	}	
+	.v-table-cell-content:first-child .v-table-cell-wrapper {
+		padding-left: 5px;
+		padding-right: 5px;
+	}	
+	.v-table-cell-content:last-child .v-table-cell-wrapper {
+		padding-right: 0px;
+	}
+	.v-table-cell-content .v-button-link{
+		outline: none;
+		line-height: 25px;
+	}
+	.v-table-cell-content .v-button-link:hover,
+	.v-table-cell-content .v-button-link:active,
+	.v-table-cell-content .v-button-link:visited,
+	.v-table-cell-content .v-button-link:focus{
+		outline: none;
+		line-height: 25px;
+	}
+	.separator_line{
+    	margin-left: 3px;
+    	margin-right: 3px;
+    	height: 25px;
+    	line-height: 25px;
+    	color:#ccc;
+    }
+    tr.v-table-row,
+    tr.v-table-row-odd{
+		transition: All 0.2s ease;
+		-webkit-transition: All 0.2s ease;
+		-moz-transition: All 0.2s ease;
+    }
+	.v-table-row-odd {
+		background-color: #fcfcfc;
+	}
+	.v-table-row:hover,
+	.v-table-row-odd:hover{
+		background: #f0f7ff;
+
+	}
+/*	.v-table-row:hover{
+		.v-table-cell-content {
+		border-left: 1px solid red;
+		border-bottom: 1px solid red;
+		}
+		.v-table-cell-content:first-child {
+		border-left:none;
+		padding-left: 1px;
+	}	
+	} */
+	.v-table .v-selected {
+		text-shadow: 0 .1em .1em rgba(0,0,0,.3);
+		background: #6ba7e4;
+		background: -moz-linear-gradient(top, #75b0e7 0%, #5f9de1 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#75b0e7), color-stop(100%,#5f9de1));
+		background: -webkit-linear-gradient(top, #75b0e7 0%,#5f9de1 100%);
+		background: -o-linear-gradient(top, #75b0e7 0%,#5f9de1 100%);
+		background: -ms-linear-gradient(top, #75b0e7 0%,#5f9de1 100%);
+	}
+	.v-table .v-selected + .v-selected {
+		background: #5f9de1;
+	}
+	.v-table .v-selected .v-table-cell-content {
+		border-left-color: transparent;
+	}
+	
+	
+	//style for table which need border(usually in entity page or dialog)
+	.v-table-border-setting{
+
+    		/*border:1px solid #d4d5d5;*/
+
+    	
+  	}
+  
+/*	//style of table in view page
+  .table-in-view{
+    .v-table-caption-container{
+     font-weight:bold;
+    }
+    .v-table-header-wrap{
+      border:none !important;
+    }
+    .v-table-header{
+      border-top:1px solid #dee3ea;
+      font-weight: bold;
+      position: relative;
+      padding-bottom: 0px;
+      padding-top: 0px;
+      font-size: 11px;
+      vertical-align: top;
+    }
+    .v-table-cell-content{
+      padding: 3px 8px;
+        line-height: 20px;
+        text-align: left;
+        vertical-align: top;
+        border-top: 1px solid #dddddd;
+    }
+  }*/
+	
+	//style of setting marginbottom:12px;
+	.v-table-marginbottom12{
+		margin-bottom:12px;
+		overflow: hidden !important;
+	}
+}

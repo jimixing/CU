@@ -1,0 +1,273 @@
+package com.ebao.gs.pol.prdt.config.service.impl;
+
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.transaction.UserTransaction;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.hssf.usermodel.HSSFDateUtil;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import com.ebao.foundation.common.resource.ThreadBindResourceManager;
+import com.ebao.foundation.commons.exceptions.AppException;
+import com.ebao.foundation.module.global.WebConstant;
+import com.ebao.gs.pol.constant.UIConfigExcelConstant;
+import com.ebao.gs.pol.prdt.config.ConfigPageInfo;
+import com.ebao.gs.pol.prdt.config.ConfigSectionInfo;
+import com.ebao.gs.pol.prdt.config.dao.ConfigSqlExecuteDao;
+import com.ebao.gs.pol.prdt.config.dao.impl.ConfigSqlExecuteDaoImpl;
+import com.ebao.gs.pol.prdt.config.service.ConfigPageService;
+import com.ebao.gs.pol.prdt.config.service.ConfigSectionService;
+import com.ebao.gs.pol.prdt.config.service.ConfigUIUtilService;
+import com.ebao.gs.pol.prdt.config.service.UIConfigImportService;
+import com.ebao.pub.util.Trans;
+import com.vaadin.ui.Notification;
+
+public class UIConfigImportServiceImpl implements UIConfigImportService {
+	
+	private ConfigUIUtilService configService = new ConfigUIUtilServiceImpl();
+	private ConfigSqlExecuteDao configSqlExecuteDao = new ConfigSqlExecuteDaoImpl();
+	private ConfigPageService configPageService = new ConfigPageServiceImpl();
+	private ConfigSectionService configSectionService = new ConfigSectionServiceImpl();
+	
+	@Override
+	public void uiconfigImport(String productName, String fileName) throws Exception {
+		// TODO Auto-generated method stub
+		HttpServletRequest request = (HttpServletRequest) ThreadBindResourceManager.getBindResource(WebConstant.REQUEST);
+		InputStream inputStream = request.getInputStream();
+		
+		Workbook workbook = null;
+		if (StringUtils.endsWithIgnoreCase(fileName, ".xls")) {
+			workbook = new HSSFWorkbook(inputStream);
+		} else if (StringUtils.endsWithIgnoreCase(fileName, ".xlsx")) { 
+			workbook = new XSSFWorkbook(inputStream);
+		}
+		
+		UserTransaction transaction = null;
+		try {
+			transaction = Trans.getUserTransaction();
+			transaction.begin();
+			
+			this.validate(workbook);
+			
+			this.handlerPageSheet(workbook, productName);
+			this.handlerSectionSheet(workbook, productName);
+			this.handlerFieldSheet(workbook, productName);
+
+			transaction.commit();
+		} catch (Exception e) {
+			transaction.rollback();
+			throw e;
+		}
+	}
+	
+	protected void validate(Workbook workbook) throws Exception {
+		StringBuffer config = new StringBuffer();
+		
+		config.append(this.validatePageSheet(workbook));
+		config.append(this.validateSectionSheet(workbook));
+		config.append(this.validateFieldSheet(workbook));
+		
+		if (config.length() > 0) {
+			Notification.show("Warning Message", config.toString(), Notification.Type.WARNING_MESSAGE);
+			
+			AppException e = new AppException(-1);
+			e.setLocalizedErrorMessage(config.toString());
+			throw e;
+		}
+	}
+	
+	protected StringBuffer validatePageSheet(Workbook workbook) throws Exception {
+		StringBuffer config = new StringBuffer();
+		Sheet sheet = workbook.getSheet(UIConfigExcelConstant.SHEET_NAME_PAGE);
+		if (sheet == null) {
+			return null;
+		}
+		
+		for (int rowNum = 1; rowNum <= sheet.getLastRowNum(); rowNum++) {
+			Row row = sheet.getRow(rowNum);
+			if (row == null) {
+				continue;
+			}
+			
+			String pageName = this.getValue(row.getCell(2));
+			if(StringUtils.isEmpty(pageName)){
+				config.append("Import excel format is incorrect - Page Sheet: " + rowNum + "-" + 3);
+			}
+		}
+		return config;
+	}
+	
+	protected StringBuffer validateSectionSheet(Workbook workbook) throws Exception {
+		StringBuffer config = new StringBuffer();
+		Sheet sheet = workbook.getSheet(UIConfigExcelConstant.SHEET_NAME_SECTION);
+		if (sheet == null) {
+			return null;
+		}
+		
+		for (int rowNum = 1; rowNum <= sheet.getLastRowNum(); rowNum++) {
+			Row row = sheet.getRow(rowNum);
+			if (row == null) {
+				continue;
+			}
+		}
+		return config;
+	}
+	
+	protected StringBuffer validateFieldSheet(Workbook workbook) throws Exception {
+		StringBuffer config = new StringBuffer();
+		Sheet sheet = workbook.getSheet(UIConfigExcelConstant.SHEET_NAME_FIELD);
+		if (sheet == null) {
+			return null;
+		}
+		
+		for (int rowNum = 1; rowNum <= sheet.getLastRowNum(); rowNum++) {
+			Row row = sheet.getRow(rowNum);
+			if (row == null) {
+				continue;
+			}
+		}
+		return config;
+	}
+	
+	protected void handlerPageSheet(Workbook workbook, String productName) throws Exception {
+		Sheet sheet = workbook.getSheet(UIConfigExcelConstant.SHEET_NAME_PAGE);
+		if (sheet == null) {
+			return;
+		}
+		
+		String productId = configService.getProductId(productName);
+		
+		List<ConfigPageInfo> configPageInfoList = new ArrayList<ConfigPageInfo>();
+		for (int rowNum = 1; rowNum <= sheet.getLastRowNum(); rowNum++) {
+			Row row = sheet.getRow(rowNum);
+			if (row == null) {
+				continue;
+			}
+			
+			ConfigPageInfo configPageInfo = new ConfigPageInfo();
+			configPageInfo.setProductName(productName);
+			configPageInfo.setProductId(productId);
+			
+			configPageInfo.setPageSequence(Double.valueOf(this.getValue(row.getCell(0))).intValue());
+			configPageInfo.setPageName(this.getValue(row.getCell(2)));
+			configPageInfo.setPageTitle(this.getValue(row.getCell(3)));
+			configPageInfo.setPageType(this.getValue(row.getCell(4)));
+			configPageInfo.setPageTemplate(this.getValue(row.getCell(5)));
+			configPageInfo.setPageDescription(this.getValue(row.getCell(6)));
+			
+			configPageInfoList.add(configPageInfo);
+		}
+		
+		// Delete all page
+		List<ConfigPageInfo> configPageInfoTempList = configPageService.loadConfigPageList(productName);
+		for(ConfigPageInfo configPageInfo : configPageInfoTempList){
+			configPageService.delConfigPage(configPageInfo);
+		}
+		
+		// Add all page
+		for(ConfigPageInfo configPageInfo : configPageInfoList){
+			configPageService.addConfigPage(configPageInfo, false, configPageInfo.getPageTitle());
+		}
+	}
+	
+	protected void handlerSectionSheet(Workbook workbook, String productName) throws Exception {
+		Sheet sheet = workbook.getSheet(UIConfigExcelConstant.SHEET_NAME_SECTION);
+		if (sheet == null) {
+			return;
+		}
+		
+		//String productId = configService.getProductId(productName);
+		List<ConfigPageInfo> configPageInfoTempList = configPageService.loadConfigPageList(productName);
+		
+		List<ConfigSectionInfo> configSectionInfoList = new ArrayList<ConfigSectionInfo>();
+		for (int rowNum = 1; rowNum <= sheet.getLastRowNum(); rowNum++) {
+			Row row = sheet.getRow(rowNum);
+			if (row == null) {
+				continue;
+			}
+			
+			ConfigSectionInfo configSectionInfo = new ConfigSectionInfo();
+			String pageName = this.getValue(row.getCell(0));
+			for(ConfigPageInfo configPageInfo : configPageInfoTempList){
+				if(configPageInfo.getPageTitle().equals(pageName)){
+					configSectionInfo.setPage(configPageInfo);
+					break;
+				}
+			}
+			
+			configSectionInfo.setSectionName(this.getValue(row.getCell(1)));
+			configSectionInfo.setSubSectionName(this.getValue(row.getCell(2)));
+			configSectionInfo.setSectionSequence(Double.valueOf(this.getValue(row.getCell(3))).intValue());
+			configSectionInfo.setSectionTitle(this.getValue(row.getCell(4)));
+			configSectionInfo.setSectionType(this.getValue(row.getCell(5)));
+			configSectionInfo.setType(this.getValue(row.getCell(6)));
+			configSectionInfo.setSectionTemplate(this.getValue(row.getCell(7)));
+			configSectionInfo.setDescription(this.getValue(row.getCell(8)));
+			
+			configSectionInfo.setSectionCode(configSectionInfo.getSectionName());
+			
+			configSectionInfoList.add(configSectionInfo);
+		}
+		
+		// Delete All Section
+		for(ConfigPageInfo configPageInfo : configPageInfoTempList){
+			for(ConfigSectionInfo configSectionInfo : configPageInfo.getSectionList()){
+				configSectionService.delConfigSection(configSectionInfo);
+			}
+		}
+				
+		// Add All Section
+		for(ConfigSectionInfo configSectionInfo : configSectionInfoList){
+			configSectionService.addConfigSection(configSectionInfo, false, configSectionInfo.getSectionTitle());
+		}
+	}
+	
+	protected void handlerFieldSheet(Workbook workbook, String productName) throws Exception {
+		
+	}
+	
+	private String getValue(Cell cell) {
+		String value = "";
+		if (cell == null) {
+			return "";
+		}
+		switch (cell.getCellType()) {
+		case Cell.CELL_TYPE_NUMERIC:
+			if (HSSFDateUtil.isCellDateFormatted(cell)) {
+				value = HSSFDateUtil.getJavaDate(cell.getNumericCellValue()).toString();
+			} else {
+				value = String.valueOf(cell.getNumericCellValue());
+			}
+			break;
+		case Cell.CELL_TYPE_FORMULA:
+			value = cell.getCellFormula().toString();
+			break;
+		case Cell.CELL_TYPE_STRING:
+			value = cell.getStringCellValue();
+			break;
+		case Cell.CELL_TYPE_BOOLEAN:
+			value = String.valueOf(cell.getBooleanCellValue());
+			break;
+		case Cell.CELL_TYPE_BLANK:
+			value = "";
+			break;
+		case Cell.CELL_TYPE_ERROR:
+			value = "";
+			break;
+		default:
+			value = cell.getRichStringCellValue().toString();
+		}
+		return value;
+    }
+
+}
+

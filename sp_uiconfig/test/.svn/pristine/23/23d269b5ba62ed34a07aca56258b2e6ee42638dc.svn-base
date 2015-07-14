@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/gs_local"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/sp_uiconfig_core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/unit_test"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

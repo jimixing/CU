@@ -1,0 +1,254 @@
+package com.ebao.gs.pol.prdt.config;
+
+import java.io.Serializable;
+
+public class ConfigFieldInfo implements Serializable{
+	private String displayLabel="";
+	private String fieldName="";
+	private String displayType;
+	private String defaultValue="";
+	private int prdtId;
+	private String tableName;
+	private boolean isDynamic;
+	private boolean isEdit;
+	private ConfigSectionInfo section;
+	private int fieldCode;
+	private int fieldId;
+	private boolean visible;
+	private String visibleEx="";
+	private boolean required;
+	private String requieredEx="";
+	private boolean readOnly;
+	private String readOnlyEx="";
+	private String codeTabelDisplayType;
+	private String childItem;
+	private String unitedKey="";
+	private String parentItem;
+	private boolean noSelectionLoad; 
+	private String orderBy="";
+	private String whereClause="";
+	private int colspan=1;
+	private String format="";
+	private String onCreate="";
+	private String onActive="";
+	private String onRefresh="";
+	private String onBlur="";
+	private String onChange="";
+	private String onButtonClick="";
+	private int sequence;
+	
+	
+	
+	private String skinboName;
+	public String getDefaultValue() {
+		return defaultValue;
+	}
+	public void setDefaultValue(String defaultValue) {
+		this.defaultValue = defaultValue;
+	}
+	public String getFieldName() {
+		return fieldName;
+	}
+	public void setFieldName(String fieldName) {
+		this.fieldName = fieldName;
+	}
+	public String getDisplayLabel() {
+		return displayLabel;
+	}
+	public void setDisplayLabel(String displayLabel) {
+		this.displayLabel = displayLabel;
+	}
+	public String getDisplayType() {
+		return displayType;
+	}
+	public void setDisplayType(String displayType) {
+		this.displayType = displayType;
+	}
+	public ConfigSectionInfo getSection() {
+		return section;
+	}
+	public void setSection(ConfigSectionInfo section) {
+		this.section = section;
+	}
+	public int getPrdtId() {
+		return prdtId;
+	}
+	public void setPrdtId(int prdtId) {
+		this.prdtId = prdtId;
+	}
+
+	public String getTableName() {
+		return tableName;
+	}
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+	} 
+	public boolean isDynamic() { 
+		return isDynamic;
+	}
+	public void setDynamic(boolean isDynamic) {
+		this.isDynamic = isDynamic;
+	}
+
+	public String getSkinboName() {
+		return skinboName;
+	}
+	public void setSkinboName(String skinboName) {
+		this.skinboName = skinboName;
+	}
+	public int getFieldId() {
+		return fieldId;
+	}
+	public void setFieldId(int fieldId) {
+		this.fieldId = fieldId;
+	}
+	public int getFieldCode() {
+		return fieldCode;
+	}
+	public void setFieldCode(int fieldCode) {
+		this.fieldCode = fieldCode;
+	}
+
+	public boolean isVisible() {
+		return visible;
+	}
+	public void setVisible(boolean visible) {
+		this.visible = visible;
+	}
+	public String getVisibleEx() {
+		return visibleEx;
+	}
+	public void setVisibleEx(String visibleEx) {
+		this.visibleEx = visibleEx;
+	}
+
+	public boolean isRequired() {
+		return required;
+	}
+	public void setRequired(boolean required) {
+		this.required = required;
+	}
+	public String getRequieredEx() {
+		return requieredEx;
+	}
+	public void setRequieredEx(String requieredEx) {
+		this.requieredEx = requieredEx;
+	}
+
+	public boolean isReadOnly() {
+		return readOnly;
+	}
+	public void setReadOnly(boolean readOnly) {
+		this.readOnly = readOnly;
+	}
+	public String getReadOnlyEx() {
+		return readOnlyEx;
+	}
+	public void setReadOnlyEx(String readOnlyEx) {
+		this.readOnlyEx = readOnlyEx;
+	}
+	public String getCodeTabelDisplayType() {
+		return codeTabelDisplayType;
+	}
+	public void setCodeTabelDisplayType(String codeTabelDisplayType) {
+		this.codeTabelDisplayType = codeTabelDisplayType;
+	}
+	public String getChildItem() {
+		return childItem;
+	}
+	public void setChildItem(String childItem) {
+		this.childItem = childItem;
+	}
+	public String getUnitedKey() {
+		return unitedKey;
+	}
+	public void setUnitedKey(String unitedKey) {
+		this.unitedKey = unitedKey;
+	}
+	public boolean isNoSelectionLoad() {
+		return noSelectionLoad;
+	}
+	public void setNoSelectionLoad(boolean noSelectionLoad) {
+		this.noSelectionLoad = noSelectionLoad;
+	}
+	public String getOrderBy() {
+		return orderBy;
+	}
+	public void setOrderBy(String orderBy) {
+		this.orderBy = orderBy;
+	}
+	public String getWhereClause() {
+		return whereClause;
+	}
+	public void setWhereClause(String whereClause) {
+		this.whereClause = whereClause;
+	}
+	public int getColspan() {
+		return colspan;
+	}
+	public void setColspan(int colspan) {
+		this.colspan = colspan;
+	}
+	public String getFormat() {
+		return format;
+	}
+	public void setFormat(String format) {
+		this.format = format;
+	}
+	public String getOnCreate() {
+		return onCreate;
+	}
+	public void setOnCreate(String onCreate) {
+		this.onCreate = onCreate;
+	}
+	public String getOnActive() {
+		return onActive;
+	}
+	public void setOnActive(String onActive) {
+		this.onActive = onActive;
+	}
+	public String getOnRefresh() {
+		return onRefresh;
+	}
+	public void setOnRefresh(String onRefresh) {
+		this.onRefresh = onRefresh;
+	}
+	public String getOnBlur() {
+		return onBlur;
+	}
+	public void setOnBlur(String onBlur) {
+		this.onBlur = onBlur;
+	}
+	public String getOnChange() {
+		return onChange;
+	}
+	public void setOnChange(String onChange) {
+		this.onChange = onChange;
+	}
+	public String getOnButtonClick() {
+		return onButtonClick;
+	}
+	public void setOnButtonClick(String onButtonClick) {
+		this.onButtonClick = onButtonClick;
+	}
+	public String getParentItem() {
+		return parentItem;
+	}
+	public void setParentItem(String parentItem) {
+		this.parentItem = parentItem;
+	}
+	public int getSequence() {
+		return sequence;
+	}
+	public void setSequence(int sequence) {
+		this.sequence = sequence;
+	}
+	public boolean isEdit() {
+		return isEdit;
+	}
+	public void setEdit(boolean isEdit) {
+		this.isEdit = isEdit;
+	}
+	
+
+}

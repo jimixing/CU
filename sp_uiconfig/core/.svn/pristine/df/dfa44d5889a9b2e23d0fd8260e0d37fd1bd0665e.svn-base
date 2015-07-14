@@ -1,0 +1,86 @@
+package com.ebao.gs.pol.constant;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class UIConfigExcelConstant {
+	
+	public static Map<String, String[]> PAGE_HEADER_DB_MAP = new HashMap<String, String[]>();
+	public static Map<String, String[]> SECTION_HEADER_DB_MAP = new HashMap<String, String[]>();
+	public static Map<String, String[]> FIELD_HEADER_DB_MAP = new HashMap<String, String[]>();
+	
+	static {
+		PAGE_HEADER_DB_MAP.put("PAGE_SEQUENCE", new String[]{"Page Sequence", "PAGE_SEQUENCE"});
+		PAGE_HEADER_DB_MAP.put("PRODUCT_NAME", new String[]{"Product Name", "PRODUCT_NAME"});
+		PAGE_HEADER_DB_MAP.put("PAGE_NAME", new String[]{"Page Name", "PAGE_NAME"});
+		PAGE_HEADER_DB_MAP.put("PAGE_TITLE", new String[]{"Page Title", "PAGE_TITLE"});
+		PAGE_HEADER_DB_MAP.put("PAGE_TYPE", new String[]{"Page Type", "PAGE_TYPE"});
+		PAGE_HEADER_DB_MAP.put("PAGE_TEMPLATE", new String[]{"Page Template", "PAGE_TEMPLATE"});
+		PAGE_HEADER_DB_MAP.put("PAGE_DESCRIPTION", new String[]{"Page Description", "PAGE_DESCRIPTION"});
+		
+		SECTION_HEADER_DB_MAP.put("PAGE_NAME", new String[]{"Page Name", "PAGE_NAME"});
+		SECTION_HEADER_DB_MAP.put("SECTION_NAME", new String[]{"Section Name", "SECTION_NAME"});
+		SECTION_HEADER_DB_MAP.put("SUB_SECTION_NAME", new String[]{"Sub Section Name", "SUB_SECTION_NAME"});
+		SECTION_HEADER_DB_MAP.put("SECTION_SEQUENCE", new String[]{"Section Sequence", "SECTION_SEQUENCE"});
+		SECTION_HEADER_DB_MAP.put("SECTION_TITLE", new String[]{"Section Title", "SECTION_TITLE"});
+		SECTION_HEADER_DB_MAP.put("SECTION_CODE", new String[]{"Section Code", "SECTION_CODE"});
+		SECTION_HEADER_DB_MAP.put("SECTION_TYPE", new String[]{"Section Type", "SECTION_TYPE"});
+		SECTION_HEADER_DB_MAP.put("TYPE", new String[]{"Type", "TYPE"});
+		SECTION_HEADER_DB_MAP.put("SECTION_TEMPLATE", new String[]{"Section Template", "SECTION_TEMPLATE"});
+		SECTION_HEADER_DB_MAP.put("SECTION_DESCRIPTION", new String[]{"Section Description", "SECTION_DESCRIPTION"});
+	}
+	
+	public static String[] PAGE_HEADER_ARRAY = {
+			PAGE_HEADER_DB_MAP.get("PAGE_SEQUENCE")[0],
+			PAGE_HEADER_DB_MAP.get("PRODUCT_NAME")[0],
+			PAGE_HEADER_DB_MAP.get("PAGE_NAME")[0],
+			PAGE_HEADER_DB_MAP.get("PAGE_TITLE")[0],
+			PAGE_HEADER_DB_MAP.get("PAGE_TYPE")[0],
+			PAGE_HEADER_DB_MAP.get("PAGE_TEMPLATE")[0], 
+			PAGE_HEADER_DB_MAP.get("PAGE_DESCRIPTION")[0]
+	};
+	
+	public static String[] SECTION_HEADER_ARRAY = {
+			SECTION_HEADER_DB_MAP.get("PAGE_NAME")[0],
+			SECTION_HEADER_DB_MAP.get("SECTION_NAME")[0],
+			SECTION_HEADER_DB_MAP.get("SUB_SECTION_NAME")[0],
+			SECTION_HEADER_DB_MAP.get("SECTION_SEQUENCE")[0],
+			SECTION_HEADER_DB_MAP.get("SECTION_TITLE")[0],
+			SECTION_HEADER_DB_MAP.get("SECTION_CODE")[0],
+			SECTION_HEADER_DB_MAP.get("SECTION_TYPE")[0],
+			SECTION_HEADER_DB_MAP.get("TYPE")[0],
+			SECTION_HEADER_DB_MAP.get("SECTION_TEMPLATE")[0],
+			SECTION_HEADER_DB_MAP.get("SECTION_DESCRIPTION")[0]
+	};
+	
+	public static String[] FIELD_HEADER_ARRAY = {
+			// page & section & sub section attribute
+			"Page Name", "Section Name", "Sub Section Name",
+			
+			// field attribute
+			"Sequence", "Field Name", "Field Code", "Label", "Display Type", "Dynamic Type",
+			"Value Binding", "Default Value", "Colspan", "Format", "IO", "Help Text", "Empty Text", "Input Width", "Error Message", "Allow Decimals", "Decimal Precision",
+			"Validation Group", "Min Value", "Max Value", "Min Length", "Max Length",
+			
+			"Readonly", "Required", "Display", "Readonly Expression", "Required Expression", "Display Expression",
+			"CodeTable Table Name", "CodeTable Display Type", "CodeTable Where Clause", "CodeTable Order By", "Child Field Code","Parent Field Code", "Foreign Key", "No Selection Load", 
+			"TextArea Rows", "TextArea Cols", 
+			"Column Width", "Table Title Align", "Table Column Align", 
+			// UIC2 Component JSF event attribute
+			"Ajax Enabled", "Action", "Action Listener", "On Chagne Listener", "Update Field Ids",
+			// UIC2 Component JavaScript event attribute
+			"On Create", "On Active", "On Refresh", "On Blur", "On Blur", "On Change", "On Button Click"};
+	
+	public static String[][] FIELD_BIG_DEADER_ARRAY = {
+			{"0", "Page & Section"},
+			{"3", "Basic Attribute"},
+			{"25", "Readonly & Required & Display"},
+			{"31", "CodeTable"},
+			{"39", "TextArea & DataTable"},
+			{"44", "JSF Event"},
+			{"49", "JavaScript Event"}
+	};
+
+}
+
+

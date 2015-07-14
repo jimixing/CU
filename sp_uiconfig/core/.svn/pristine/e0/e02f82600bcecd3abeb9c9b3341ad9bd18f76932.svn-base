@@ -1,0 +1,7 @@
+@mixin dashboard-gridlayout {	
+    .v-gridlayout-spacing-on {
+        padding-left: 8px;
+        padding-top: 8px;
+        overflow: hidden;
+    }
+} 

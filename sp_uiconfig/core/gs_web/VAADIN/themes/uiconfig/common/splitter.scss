@@ -1,0 +1,14 @@
+@mixin uiconfig-splitter {
+
+	.v-splitpanel-hsplitter {
+  		cursor: col-resize !important;
+  		width: 1px !important;
+  		background: #ff0000 !important;
+  		right: 0 !important;
+	}
+
+	.v-splitpanel-horizontal > div > .v-splitpanel-second-container {
+  		margin-left: 30px;
+	}
+	
+} 

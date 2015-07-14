@@ -1,0 +1,363 @@
+package com.ebao.gs.sp.uiconfig;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.net.URI;
+import java.util.List;
+
+import com.ebao.foundation.commons.exceptions.ExceptionUtil;
+import com.ebao.foundation.commons.exceptions.GenericException;
+import com.ebao.gs.pol.prdt.config.ConfigPageInfo;
+import com.ebao.gs.pol.prdt.config.UIConfigExcelUploader;
+import com.ebao.gs.pol.prdt.config.service.ConfigUIUtilService;
+import com.ebao.gs.pol.prdt.config.service.UIConfigCopyService;
+import com.ebao.gs.pol.prdt.config.service.UIConfigExportService;
+import com.ebao.gs.pol.prdt.config.service.UIConfigImportService;
+import com.ebao.gs.pol.prdt.config.service.impl.ConfigUIUtilServiceImpl;
+import com.ebao.gs.pol.prdt.config.service.impl.UIConfigCopyServiceImpl;
+import com.ebao.gs.pol.prdt.config.service.impl.UIConfigExportServiceImpl;
+import com.ebao.gs.pol.prdt.config.service.impl.UIConfigImportServiceImpl;
+import com.vaadin.data.Item;
+import com.vaadin.data.util.HierarchicalContainer;
+import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.server.FileDownloader;
+import com.vaadin.server.Page;
+import com.vaadin.server.StreamResource;
+import com.vaadin.ui.Alignment;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Component;
+import com.vaadin.ui.FormLayout;
+import com.vaadin.ui.GridLayout;
+import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.Panel;
+import com.vaadin.ui.TextField;
+import com.vaadin.ui.Tree;
+import com.vaadin.ui.UI;
+import com.vaadin.ui.Upload;
+import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Window;
+
+public class PageAddUI extends VerticalLayout implements View {
+
+	public static final String PAGE_ADD = "pageAdd";
+	private HorizontalLayout mainLayout;
+	private ProductMain pm;
+	private Tree mainTree;
+
+	private Panel panel_2;
+
+	private GridLayout gridLayout_1;
+
+	private Button button_1;
+	private Button backHomeBtn;
+
+	private Label label_3;
+	private Label label_2;
+
+	private String productName;
+	private Button exportBtn;
+	private Button copyBtn ;
+	private List<ConfigPageInfo> pageInfoList;
+	private ConfigUIUtilService configService = new ConfigUIUtilServiceImpl();
+	private UIConfigExportService uiconfigExportService = new UIConfigExportServiceImpl();
+	private UIConfigImportService uiconfigImportService = new UIConfigImportServiceImpl();
+	
+
+	private TextField textField_4;
+	private Button backBtn;
+
+	public PageAddUI(String productName, ProductMain pm, Tree mainTree, List<ConfigPageInfo> pageInfoList) {
+		this.productName = productName;
+		this.pm = pm;
+		this.mainTree = mainTree;
+		this.pageInfoList = pageInfoList;
+		init();
+		// buildMainLayout();
+		// setCompositionRoot(mainLayout);
+	}
+
+	private void init() {
+		final FormLayout form = new FormLayout();
+		form.setWidth("600px");
+		form.setSizeUndefined();
+
+		addComponent(form);
+
+		textField_4 = new TextField("Product Name:");
+		textField_4.setValue(productName);
+		// textField_4.setReadOnly(true);
+		textField_4.setEnabled(false);
+		textField_4.setHeight("40px");
+		textField_4.setWidth("300px");
+		form.addComponent(textField_4);
+
+		HorizontalLayout horizontal = new HorizontalLayout();
+		horizontal.setSpacing(true);
+		horizontal.setWidth("500px");
+		button_1 = new Button("Add Page");
+		button_1.setStyleName("primary");
+		button_1.setWidth("100px");
+		button_1.addClickListener(new Button.ClickListener() {
+			@SuppressWarnings("unchecked")
+			@Override
+			public void buttonClick(ClickEvent event) {
+				HierarchicalContainer container = (HierarchicalContainer) mainTree.getContainerDataSource();
+				String pageId = "page" + mainTree.size();
+				Item page = container.addItem(pageId);
+				page.getItemProperty(PageSectionTreeGenerator.NODE_TITLE).setValue(pageId);
+				page.getItemProperty(PageSectionTreeGenerator.NODE_TYPE).setValue("PAGE");
+				container.setParent(pageId, productName);
+				ConfigPageInfo pageInfo = new ConfigPageInfo();
+				pageInfo.setPageTitle(pageId);
+
+				pageInfoList.add(pageInfo);
+
+				pageInfo.setProductName(productName);
+
+				String productId;
+				try {
+					productId = configService.getProductId(productName);
+					pageInfo.setProductId(productId);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					
+				}
+
+				PageDisplay pd = new PageDisplay(productName, pm, mainTree,
+						pageId, pageInfo, pageInfoList);
+				if (pm.getComponentCount() <= 1) {
+					pm.addComponent(pd);
+				} else {
+					Component last = pm.getSecondComponent();// .getComponent(1);
+					pm.replaceComponent(last, pd);
+				}
+			}
+		});
+		horizontal.addComponent(button_1);
+		
+		backBtn = new Button("Return");
+		backBtn.setStyleName("primary");
+		
+		backBtn.addClickListener(new Button.ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				URI uri = Page.getCurrent().getLocation();
+				String url = uri.toString().substring(0, uri.toString().lastIndexOf("#"));
+				uri = uri.create(url);
+				Page.getCurrent().setLocation(uri);
+			}
+		});
+
+		backBtn.setWidth("100px");
+		horizontal.addComponent(backBtn);
+
+		backHomeBtn = new Button("To HomePage");
+		backHomeBtn.setStyleName("primary");
+		backHomeBtn.setWidth("120px");
+		backHomeBtn.addClickListener(new Button.ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				URI uri = Page.getCurrent().getLocation();
+
+				String url = uri.toString().substring(0, uri.toString().lastIndexOf("#"));
+				if (url.indexOf("&") > 0) {
+					url = url.substring(0, url.indexOf("&"));
+				}
+				url = url.replace("gs/uiconfig/", "main.jsp");
+				uri = uri.create(url);
+				Page.getCurrent().setLocation(uri);
+			}
+		});
+		horizontal.addComponent(backHomeBtn);
+		addComponent(horizontal);
+		
+		 Panel p = new Panel("Import/Export");
+		 
+		VerticalLayout vertical = new VerticalLayout();
+		exportBtn = new Button("Export");
+		exportBtn.setStyleName("primary");
+		exportBtn.setWidth("120px");
+		this.handlerFileDownloaderBtn(exportBtn);
+		
+		UIConfigExcelUploader receiver = new UIConfigExcelUploader(this.productName);
+		//Upload upload = new Upload("Upload Image Here", receiver);
+		Upload upload = new Upload();
+		upload.setButtonCaption("Start Upload");
+		upload.addStartedListener(receiver);
+		//upload.addSucceededListener(receiver);
+		upload.addFinishedListener(receiver);
+		
+		vertical.addComponent(exportBtn);
+		vertical.addComponent(upload);
+		
+		
+		p.setContent(vertical);
+		
+		addComponent(p);
+		
+		
+		
+		HorizontalLayout hori = new HorizontalLayout();
+		copyBtn = new Button("Copy");
+		copyBtn.setStyleName("primary");
+		copyBtn.setWidth("120px");
+		copyBtn.addClickListener(new Button.ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				
+				final Window fieldWindow = new Window(null);
+				fieldWindow.setWidth("650px");
+				fieldWindow.setHeight("500px");
+				VerticalLayout subContent=new VerticalLayout();
+				subContent.setMargin(true);
+				fieldWindow.setContent(subContent);
+				ProductCopy pui=new ProductCopy(fieldWindow,mainTree,productName,pageInfoList);
+				subContent.setSizeFull();
+				subContent.addComponent(pui);
+				
+				fieldWindow.center();
+				UI.getCurrent().addWindow(fieldWindow);
+			}
+		});
+		hori.addComponent(copyBtn);
+		
+		addComponent(hori);
+	}
+	
+	private void handlerFileDownloaderBtn(Button button) {
+		StreamResource.StreamSource source = new StreamResource.StreamSource() {
+			public InputStream getStream() {
+				try {
+					return new ByteArrayInputStream(uiconfigExportService.getExcelFileStream(productName).toByteArray());
+				} catch (Exception e) {
+					GenericException ge = ExceptionUtil.parse(e);
+					throw ge;
+				}
+			}
+		};
+		
+	    StreamResource resource = new StreamResource (source, uiconfigExportService.getUIConfigExportFileName());
+		StreamResource sr = resource;
+		FileDownloader fileDownloader = new FileDownloader(sr);
+		fileDownloader.extend(button);
+	}
+
+	private HorizontalLayout buildMainLayout() {
+		// common part: create layout
+		mainLayout = new HorizontalLayout();
+		mainLayout.setImmediate(false);
+		mainLayout.setWidth("100%");
+		mainLayout.setHeight("100%");
+		mainLayout.setMargin(false);
+		// top-level component properties
+		setWidth("100%");
+		setHeight("100.0%");
+
+		// panel_2
+		panel_2 = buildPanel_2();
+		mainLayout.addComponent(panel_2);
+		mainLayout.setComponentAlignment(panel_2, new Alignment(20));
+
+		return mainLayout;
+	}
+
+	private Panel buildPanel_2() {
+		// common part: create layout
+		panel_2 = new Panel();
+		panel_2.setImmediate(false);
+		panel_2.setWidth("100.0%");
+		panel_2.setHeight("100%");
+
+		// gridLayout_1
+		gridLayout_1 = buildGridLayout_1();
+		panel_2.setContent(gridLayout_1);
+
+		return panel_2;
+	}
+
+	private GridLayout buildGridLayout_1() {
+		// common part: create layout
+		gridLayout_1 = new GridLayout();
+		gridLayout_1.setImmediate(false);
+		gridLayout_1.setWidth("100.0%");
+		gridLayout_1.setHeight("100.0%");
+		gridLayout_1.setMargin(false);
+		gridLayout_1.setRows(4);
+		gridLayout_1.setColumns(3);
+
+		// label_2
+		label_2 = new Label();
+		label_2.setImmediate(false);
+		label_2.setWidth("186px");
+		label_2.setHeight("39px");
+		label_2.setValue("Product Name:");
+		gridLayout_1.addComponent(label_2, 0, 1);
+		gridLayout_1.setComponentAlignment(label_2, new Alignment(20));
+
+		// label_3
+		label_3 = new Label();
+		label_3.setValue(productName);
+		label_3.setImmediate(false);
+		label_3.setWidth("131px");
+		label_3.setHeight("35px");
+		gridLayout_1.addComponent(label_3, 1, 1);
+		gridLayout_1.setComponentAlignment(label_3, new Alignment(20));
+
+		// button_1
+		button_1 = new Button("Add Page");// ComponentFactory.createDefaultButton("Add Page");
+		button_1.setImmediate(false);
+		button_1.setWidth("150px");
+		button_1.setStyleName("primary");
+		button_1.addClickListener(new Button.ClickListener() {
+
+			@SuppressWarnings("unchecked")
+			@Override
+			public void buttonClick(ClickEvent event) {
+				HierarchicalContainer container = (HierarchicalContainer) mainTree.getContainerDataSource();
+				String pageId = "page" + mainTree.size();
+				Item page = container.addItem(pageId);
+				page.getItemProperty(PageSectionTreeGenerator.NODE_TITLE).setValue(pageId);
+				page.getItemProperty(PageSectionTreeGenerator.NODE_TYPE).setValue("PAGE");
+				container.setParent(pageId, productName);
+				ConfigPageInfo pageInfo = new ConfigPageInfo();
+				pageInfo.setPageTitle(pageId);
+				pageInfoList.add(pageInfo);
+
+				pageInfo.setProductName(productName);
+
+				String productId;
+				try {
+					productId = configService.getProductId(productName);
+					pageInfo.setProductId(productId);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+
+				}
+
+				PageDisplay pd = new PageDisplay(productName, pm, mainTree,
+						pageId, pageInfo, pageInfoList);
+				if (pm.getComponentCount() <= 1) {
+					pm.addComponent(pd);
+				} else {
+					Component last = pm.getSecondComponent();// .getComponent(1);
+					pm.replaceComponent(last, pd);
+				}
+
+			}
+		});
+
+		gridLayout_1.addComponent(button_1, 2, 1);
+		gridLayout_1.setComponentAlignment(button_1, new Alignment(20));
+
+		return gridLayout_1;
+	}
+
+	@Override
+	public void enter(ViewChangeEvent event) {
+
+	}
+
+}

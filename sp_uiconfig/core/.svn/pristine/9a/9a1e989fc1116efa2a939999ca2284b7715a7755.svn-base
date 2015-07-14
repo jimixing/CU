@@ -1,0 +1,31 @@
+package com.ebao.gs.pol.config.datamodel;
+
+public class PageDataModelField {
+	private int nodeId;
+	private String fieldDisplayName;
+	private int fieldId;
+	public int getNodeId() {
+		return nodeId;
+	}
+	public void setNodeId(int nodeId) {
+		this.nodeId = nodeId;
+	}
+	public String getFieldDisplayName() {
+		return fieldDisplayName;
+	}
+	public void setFieldDisplayName(String fieldDisplayName) {
+		this.fieldDisplayName = fieldDisplayName;
+	}
+	public int getFieldId() {
+		return fieldId;
+	}
+	public void setFieldId(int fieldId) {
+		this.fieldId = fieldId;
+	}
+	
+	
+	
+	
+	
+
+}

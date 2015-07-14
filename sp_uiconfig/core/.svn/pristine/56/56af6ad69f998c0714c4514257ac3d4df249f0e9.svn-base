@@ -1,0 +1,30 @@
+package com.ebao.gs.pol.prdt.config;
+
+public class SectionTemplateInfo {
+	private String variable;
+	private String className;
+	private String sectionName;
+	public String getVariable() {
+		return variable;
+	}
+	public void setVariable(String variable) {
+		this.variable = variable;
+	}
+	public String getClassName() {
+		return className;
+	}
+	public void setClassName(String className) {
+		this.className = className;
+	}
+	public String getSectionName() {
+		return sectionName;
+	}
+	public void setSectionName(String sectionName) {
+		this.sectionName = sectionName;
+	}
+	
+	
+	
+	
+
+}

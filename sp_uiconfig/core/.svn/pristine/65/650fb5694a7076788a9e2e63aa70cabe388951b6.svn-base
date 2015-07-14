@@ -1,0 +1,30 @@
+package com.ebao.gs.pol.prdt.config;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class SkinboInfo {
+	private String skinboName;
+	
+	private List<String> fieldList=new LinkedList<String>();
+
+	public String getSkinboName() {
+		return skinboName;
+	}
+
+	public void setSkinboName(String skinboName) {
+		this.skinboName = skinboName;
+	}
+
+	public List<String> getFieldList() {
+		return fieldList;
+	}
+
+	public void setFieldList(List<String> fieldList) {
+		this.fieldList = fieldList;
+	}
+	
+	
+	
+
+}

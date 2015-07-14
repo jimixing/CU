@@ -1,0 +1,7 @@
+package com.ebao.gs.sp.uiconfig;
+
+import com.vaadin.server.VaadinServlet;
+
+public class UIServlet extends VaadinServlet {
+
+}

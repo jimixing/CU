@@ -1,0 +1,22 @@
+@mixin uiconfig-textarea {
+  .v-textarea{
+		@include border-radius(1px);
+		border: 1px solid #ccc;
+		background: #fff;
+		line-height: 1;
+		height:52px;
+		margin: 0; 
+		transition:All 0.2s ease;
+    	-webkit-transition:All 0.2s ease;
+    	-moz-transition:All 0.2s ease;
+    	-webkit-box-shadow: inset 0 1px 1px #f1f1f1;
+    	-moz-box-shadow: inset 0 1px 1px #f1f1f1;
+    	box-shadow: inset 0 1px 1px #f1f1f1;
+  }
+  .v-textarea-readonly{
+		@include border-radius(1px);
+		border: 1px solid #ccc;
+		background: red;
+		/*cursor: not-allowed;*/
+	} 
+}

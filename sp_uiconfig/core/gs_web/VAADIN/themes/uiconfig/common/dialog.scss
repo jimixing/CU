@@ -1,0 +1,129 @@
+@mixin uiconfig-dialog {
+  // base style of dialog
+  .basedialog{
+    border-radius:1px;
+  }
+  .basedialog .v-window-outerheader{
+      font-size:12px;
+      font-weight: bold;
+      line-height:30px;
+      height:30px;
+      background: #508fcc;
+      color:#fff;
+      text-shadow:0 1px 0 rgba(0,0,0,0.3);
+    }
+  .basedialog .v-window-outerheader div.v-window-header {
+      font-size:12px;
+      font-weight: bold; 
+      color:#fff;
+      width:auto;
+      padding-left:10px;
+    }
+  .basedialog .v-button{
+  }
+  .basedialog .v-window-contents{
+    padding-top: 0 !important;
+    margin-top: 0 !important; 
+  }
+  .dialog_footer{
+    width: 100%;
+    height:50px !important;
+    background: #eee;
+    border-top:1px solid #e0e0e0;
+    text-align: right;
+    padding-right: 20px;
+  }
+  .dialog_form_content{
+    padding: 20px 20px;
+  }
+  .rule_in_window{
+  	padding: 0px 0px;
+  }
+  .dialog_form_content .v-formlayout-row td.v-formlayout-captioncell,
+  .dialog_form_content .v-formlayout-row td.v-formlayout-errorcell,
+  .dialog_form_content .v-formlayout-row td.v-formlayout-contentcell
+  {
+    height: 26px;
+    line-height: 1;
+    text-align: left;
+    margin-top:0;
+    padding-top: 10px !important;
+    color: #666;
+  }
+  .dialog_form_content .v-formlayout-row .v-formlayout-captioncell .v-caption{
+    font-size: 12px;
+    color:#666;
+  }
+  .dialog_form_content .v-formlayout-firstrow td.v-formlayout-captioncell,
+  .dialog_form_content .v-formlayout-firstrow td.v-formlayout-errorcell,
+  .dialog_form_content .v-formlayout-firstrow td.v-formlayout-contentcell
+  {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    color: #666;
+  } 
+  .dialog_form_content .v-formlayout-lastrow td.v-formlayout-captioncell,
+  .dialog_form_content .v-formlayout-lastrow td.v-formlayout-errorcell,
+  .dialog_form_content .v-formlayout-lastrow td.v-formlayout-contentcell
+  {
+    padding-bottom: 0 !important;
+    color: #666;
+  }  
+  .dialog_form_content .v-formlayout-row{
+    height: 26px;
+  }
+
+.basedialog div.v-window-closebox {
+    top:0px;
+    right:0px;
+    background: transparent;
+    width:30px;      
+    height:30px;
+  }
+.v-window-closebox:before {
+    font-family: 'FontAwesome';
+    content: "\f00d";
+    font-size:12px;
+    color:#fff;
+    line-height: 30px;
+}
+
+  
+  
+  .basedialog .v-window-footer .v-window-resizebox{
+    width:0px;
+    height:0px;
+  }
+ 
+
+  //style for OptionGroupDialog
+  .basedialog.optiongroup-dialog .v-checkbox > input{
+    margin-right:30px;
+  }
+  //style for TableDialog(include SearchableSelectedTableDialog)
+  .basedialog.table-dialog .v-window-contents>div.v-scrollable>div.v-verticallayout>div:first-child>div.v-verticallayout>div:first-child>div{
+       margin-top:12px;
+     }
+   .basedialog.table-dialog .v-window-contents>div.v-scrollable>div.v-verticallayout>div:first-child>div.v-horizontallayout{
+      width:100% !important;
+      height:26px;
+   }
+  .basedialog.table-dialog .v-window-contents>div.v-scrollable>div.v-verticallayout>div:first-child>div.v-verticallayout .v-table{
+      border:0.1em solid #d4d5d5;
+      margin-bottom:12px;
+      overflow: hidden !important;  
+      .v-table-header-wrap{
+        border:none;
+      }     
+      .v-table-header td:first-child .v-table-caption-container{
+        margin-left:0px;
+        padding-left:7px;
+      }
+      .v-table-header td:last-child .v-table-caption-container{
+        padding-right:0px;
+      } 
+     .v-table-caption-container{
+        font-weight:bold;
+      }
+  }
+}

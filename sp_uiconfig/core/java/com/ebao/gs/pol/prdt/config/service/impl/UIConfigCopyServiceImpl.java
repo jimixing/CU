@@ -1,0 +1,138 @@
+package com.ebao.gs.pol.prdt.config.service.impl;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import com.ebao.gs.pol.prdt.config.ConfigFieldInfo;
+import com.ebao.gs.pol.prdt.config.ConfigPageInfo;
+import com.ebao.gs.pol.prdt.config.ConfigSectionInfo;
+import com.ebao.gs.pol.prdt.config.dao.ConfigSqlExecuteDao;
+import com.ebao.gs.pol.prdt.config.dao.impl.ConfigSqlExecuteDaoImpl;
+import com.ebao.gs.pol.prdt.config.service.ConfigDynamicFieldService;
+import com.ebao.gs.pol.prdt.config.service.ConfigPageService;
+import com.ebao.gs.pol.prdt.config.service.ConfigSectionService;
+import com.ebao.gs.pol.prdt.config.service.UIConfigCopyService;
+
+public class UIConfigCopyServiceImpl implements UIConfigCopyService {
+
+	ConfigPageService pageService=new ConfigPageServiceImpl();
+	ConfigSectionService sectionService=new ConfigSectionServiceImpl();
+	ConfigDynamicFieldService fieldService=new ConfigDynamicFieldServiceImpl();
+	ConfigSqlExecuteDao dao=new ConfigSqlExecuteDaoImpl();
+	
+	@Override
+	public void copyProduct(String productName,String newProductName, List<String> pageNameList,
+			Map<String,List<String>> sectionPageNameMap) throws Exception {
+		if(productName==null||productName.isEmpty()){
+			throw new Exception("No product selected!");
+		}
+		List<ConfigPageInfo> pageList=pageService.loadConfigPageList(productName);
+		String productID=dao.getProductId(newProductName);
+		List<ConfigPageInfo> oldPageList=pageService.loadConfigPageList(newProductName);
+		for(ConfigPageInfo pageInfo:oldPageList){
+			pageService.delConfigPage(pageInfo);
+		}
+		copyProductLevel(newProductName,productID,pageList,pageNameList,sectionPageNameMap);
+
+	}
+
+	
+	private void copyProductLevel(String newProductName, String productId,List<ConfigPageInfo> pageList,List<String> pageSelectedNameList,Map<String,List<String>> sectionPageNameMap)throws Exception{
+		if(pageSelectedNameList==null||pageSelectedNameList.size()==0){
+			for(ConfigPageInfo page:pageList){
+				clearConfigPage(newProductName,productId,page);
+				saveAllConfigInfo(page);
+			}
+			return ;
+		}
+		List<ConfigPageInfo> stayPageList=new LinkedList<ConfigPageInfo>();
+		for(String pageName:pageSelectedNameList){
+			for(ConfigPageInfo page:pageList){
+				if(page.getPageName().equals(pageName)){
+					stayPageList.add(page);
+					break;
+				}
+			}
+			
+		}
+		if(sectionPageNameMap==null||sectionPageNameMap.isEmpty()){
+			for(ConfigPageInfo stayPage:stayPageList){
+				clearConfigPage(newProductName,productId, stayPage);
+				saveAllConfigInfo(stayPage);
+			}
+			return ;
+		}
+		Set<String>  pageNameSet=sectionPageNameMap.keySet();
+		for(String pageName:pageNameSet){
+			for(ConfigPageInfo page:stayPageList){
+				List<ConfigSectionInfo> staySection=new LinkedList<ConfigSectionInfo>();
+				if(page.getPageName().equals(pageName)){
+					List<ConfigSectionInfo> sectionList=page.getSectionList();
+					List<String> selectedSectionList=sectionPageNameMap.get(pageName);
+					for(String sectionName:selectedSectionList){
+						for(ConfigSectionInfo section:sectionList){
+							if(section.getSectionName().equals(sectionName)){
+								staySection.add(section);
+								break;
+							}
+						}
+					}
+					page.setSectionList(staySection);
+				}
+				
+			}
+		}
+		for(ConfigPageInfo stayPage:stayPageList){
+			clearConfigPage(newProductName,productId,stayPage);
+			saveAllConfigInfo(stayPage);
+		}
+	}
+	
+	private void saveAllConfigInfo(ConfigPageInfo pageInfo)throws Exception{
+		
+		pageService.addConfigPage(pageInfo, false, null); 
+		List<ConfigSectionInfo> sectionList =pageInfo.getSectionList();
+		for(ConfigSectionInfo section:sectionList){
+			sectionService.addConfigSection(section,false,null);
+			for(ConfigSectionInfo subsection:section.getSubSectionList()){
+				sectionService.addConfigSection(subsection,false,null);
+				for(ConfigFieldInfo field:subsection.getFieldList()){
+					fieldService.addDynamicFieldConfig(field, 0, false); 
+				}
+			}
+			for(ConfigFieldInfo field:section.getFieldList()){
+				fieldService.addDynamicFieldConfig(field, 0, false); 
+			}
+		}
+		
+	}
+	
+	private void clearConfigPage(String newProductName,String product_id,ConfigPageInfo pageInfo){
+		pageInfo.setPageId("");
+		pageInfo.setProductName(newProductName);
+		pageInfo.setProductId(product_id);
+		List<ConfigSectionInfo> sectionList=pageInfo.getSectionList();
+		for(ConfigSectionInfo section:sectionList){
+			clearConfigSection(section);
+		}
+	}
+
+	private void clearConfigSection(ConfigSectionInfo sectionInfo){
+		sectionInfo.setSectionId("");
+		List<ConfigSectionInfo> sectionList=sectionInfo.getSubSectionList();
+		for(ConfigSectionInfo section:sectionList){
+			clearConfigSection(section);
+		}
+		List<ConfigFieldInfo> fieldList=sectionInfo.getFieldList();
+		for(ConfigFieldInfo field:fieldList){
+			clearConfigField(field);
+		}
+	}
+	
+	private void clearConfigField(ConfigFieldInfo fieldInfo){
+		fieldInfo.setFieldId(0);
+	}
+
+}

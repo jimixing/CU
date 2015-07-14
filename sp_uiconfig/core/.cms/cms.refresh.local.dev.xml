@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<project name="Component Management Upgrade" default="refresh" basedir=".">
+    	
+	<echo message="To Refresh Local Dev"/>
+	<target name="refresh" depends="fun_refresh_local_resource">		
+  </target>	
+  
+  <target name="fun_refresh_local_resource">	
+    <copy todir="${local.project.path.gs_local}/web/WEB-INF/classes" failonerror="no" overwrite="true">
+	    	<fileset dir="../hibernate_hbm_file_3">
+		    	<include name="**/*"/>
+		    </fileset>
+		</copy>
+			
+		<copy todir="${local.project.path.gs_local}/web" failonerror="no" overwrite="true" >
+	    	<fileset dir="../html">
+		    	<include name="**/*"/>
+		    </fileset>
+		</copy>	
+		<copy todir="${local.project.path.gs_local}/web" failonerror="no" overwrite="true">
+	    	<fileset dir="../html/insurance">
+		    	<include name="**/*"/>
+		    </fileset>
+		</copy>	
+		<copy todir="${local.project.path.gs_local}/web" failonerror="no" overwrite="true">
+	    	<fileset dir="../gs_web">
+		    	<include name="**/*"/>
+		    	<exclude name="**/*/web.xml"/>
+		    </fileset>
+		</copy>
+		<copy todir="${local.project.path.gs_local}/web/WEB-INF/classes" failonerror="no" overwrite="true">
+	    	<fileset dir="../bin">
+		    	<include name="**/*"/>
+		    </fileset>
+		</copy>	
+		<copy todir="${local.project.path.gs_local}/web/WEB-INF/classes" failonerror="no" overwrite="true">
+	    	<fileset dir="../">
+		    	<include name="com/**/*"/>
+		    	<include name="*.xml"/>
+		    </fileset>
+		</copy>
+
+		<copy todir="${local.project.path.gs_local}/web/WEB-INF/classes" failonerror="no" overwrite="true">
+		    	<fileset dir="${local.project.path.app_config}/">
+			    	<include name="**/*"/>
+		    		<exclude name=".cms/**"/>
+			    </fileset>
+		</copy>
+		<copy todir="${local.project.path.gs_local}/web/META-INF" failonerror="no" overwrite="true">
+			  <fileset dir="../bin/META-INF">
+					<include name="tags/*.tag"/>
+			</fileset>
+		</copy>
+		<copy todir="${local.project.path.gs_local}/cloud_test/cloudtest" failonerror="no" overwrite="true">
+			    	<fileset dir="${local.project.path.cloud_test_msig}/cloudtest">
+				    	<include name="**/*"/>
+				    </fileset>
+	</copy>	
+
+	</target>
+</project>

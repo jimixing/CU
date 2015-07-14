@@ -1,0 +1,220 @@
+@mixin uiconfig-combobox {
+  
+  .v-filterselect {
+    position: relative;
+    @include border-radius(1px);
+		border: 1px solid #ccc;
+		background: #fff;
+		line-height: 1;
+		height:20px;
+		margin: 0;
+
+    -webkit-box-shadow: inset 0 1px 1px #f1f1f1;
+    -moz-box-shadow: inset 0 1px 1px #f1f1f1;
+    box-shadow: inset 0 1px 1px #f1f1f1;
+    transition:All 0.2s ease;
+    -webkit-transition:All 0.2s ease;
+    -moz-transition:All 0.2s ease;
+  }
+  .v-filterselect:hover{
+    border: 1px solid #508fcc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(80,143,204,0.2);
+    -moz-box-shadow: inset 0 1px 1px rgba(80,143,204,0.2);
+    box-shadow: inset 0 1px 1px rgba(80,143,204,0.2);
+  }
+  .v-filterselect-input {
+    @include appearance(none);
+    background: transparent;
+    border: none;
+    padding: 0 1.5em 0 0;
+    margin: 0;
+    font-size: inherit;
+    width: 100% !important;
+    color:$color;
+  }
+  .v-filterselect-input:focus {
+    outline: none;
+  }
+
+  .v-filterselect-button {
+    color:#bbb;
+    position: absolute;
+    width: 24px;
+    height: 36px;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+    border:none;
+    border-left:1px solid #ccc;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    cursor: pointer;
+    background: #fefefe;
+    margin:0 !important;
+  }
+/*  .v-filterselect:hover .v-filterselect-button{
+    color:#508fcc;
+    border-left:1px solid #508fcc;
+    background: #f4faff;
+  }*/
+  .v-filterselect-button:hover{
+    color:#508fcc;
+    border-left:1px solid #508fcc;
+    background: #f4faff;
+  }
+  .v-filterselect-button:active{
+    color:#bbb;
+    background: #f9f9f9;
+    border-left:1px solid #ccc;
+  }
+  .v-filterselect-button:before{
+    font-family:'FontAwesome'!important;
+    font-size:10px;
+    line-height: 1;
+    content: "\f078";
+    position: absolute;
+    width: 24px;
+    text-align: center;
+    top: 50%;
+    margin-top: -0.47em;
+    transition:All 0.2s ease;
+    -webkit-transition:All 0.2s ease;
+    -moz-transition:All 0.2s ease;
+  }
+  
+
+
+
+
+ //style of selection menu panel when click downward arrow in combobox
+	.v-filterselect-suggestpopup{
+    color: $color;
+    font: $font;
+    background: rgba(208,211,214,0.9);
+    @include box-shadow(0 2px 7px rgba(0,0,0,0.3));
+    color: #fff;
+    @include fade-in;
+    @include border-radius(1px);
+    padding: 0px;    
+    min-width:6em;
+    border:1px solid #bbb;
+    text-shadow: 0 1px 0px rgba(0,0,0,.5);
+    margin-top: 4px !important;
+  }
+  .v-filterselect-suggestpopup table{
+    width: 100%;
+    background: transparent;
+    width: auto;
+  }
+  .v-filterselect-suggestpopup .gwt-MenuItem{
+    padding: .1em .6em;
+    @include border-radius(1px);
+  }
+
+  .v-filterselect-suggestpopup .gwt-MenuItem-selected{
+    text-shadow: 0 1px 0px rgba(0,0,0,0.4);
+    background: #508fcc;
+    cursor: pointer;
+}
+	.v-filterselect-suggestmenu{
+	  @include border-radius(1px);
+	  background: #f6f7f7;
+	  color:#666;
+    text-shadow: 0 1px 0px rgba(255,255,255,1);
+    padding:2px;
+    @include box-sizing(border-box);
+	}
+
+
+	.v-filterselect-suggestmenu .gwt-MenuItem{
+	  @include border-radius(1px);
+	  padding:0.2em 0.4em !important;
+	}
+	.v-filterselect-suggestmenu .gwt-MenuItem-selected{
+	  text-shadow: 0 1px 0px rgba(0,0,0,0.4);
+    background: #508fcc;
+    cursor: pointer;
+	}
+	
+	//style when combobox is focused
+	 .v-filterselect-focus {
+    outline: none;
+    border-color: #69a5e4;
+  }
+  
+  //style of prompt in combobox
+    .v-filterselect-prompt,
+  .v-filterselect-prompt .v-filterselect-input{
+    font-style: normal;
+    color: $prompt-text-color;
+    }
+    
+  //style when combobox has small class
+  .v-filterselect.small {
+    padding: .15em .2em;
+    font-size: 12px;
+  }	
+  .v-webkit & .v-filterselect.small {
+    padding-bottom: .2em;
+  }
+  
+  //common style
+   .v-filterselect .v-filterselect-input, 
+  .v-filterselect-prompt .v-filterselect-input
+  {
+     font-family:$font-family;
+  }
+  
+  //style of the upward arrow which can enter pre page and the downward arrow which can enter next page
+  .v-filterselect-prevpage-off,
+  .v-filterselect-prevpage,
+  .v-filterselect-nextpage-off,
+  .v-filterselect-nextpage {
+    background: transparent;
+  }
+  
+  .v-filterselect-prevpage-off,
+  .v-filterselect-prevpage {
+    padding-bottom: 5px;
+  }
+  
+  .v-filterselect-nextpage-off,
+  .v-filterselect-nextpage {
+    padding-top: 5px;
+  }
+   
+  .v-filterselect-prevpage-off span,
+  .v-filterselect-prevpage span,
+  .v-filterselect-nextpage-off span,
+  .v-filterselect-nextpage span {
+    width: 0;
+    height: 0;
+    border: 1px solid;
+    border-width: .5em .45em;
+    border-color: transparent transparent #555;
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+  .v-filterselect-nextpage-off span,
+  .v-filterselect-nextpage span {
+    border-color: #555 transparent transparent;
+  }
+  
+  .v-filterselect-prevpage:hover span {
+    border-bottom-color: #fff;
+  }
+  
+  .v-filterselect-nextpage:hover span {
+    border-top-color: #fff;
+  }
+  
+  .v-filterselect-status {
+    color: #555;
+    font-size: 12px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-shadow:0px 1px 0px rgba(255,255,255,0.5);
+  }
+
+}

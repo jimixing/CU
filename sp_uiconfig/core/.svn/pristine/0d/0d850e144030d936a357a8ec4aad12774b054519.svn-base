@@ -1,0 +1,95 @@
+@CHARSET "ISO-8859-1";
+.uiconfig .create-button {
+	font-family: Arial, ç€¹å¬©ç¶‹;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+	display: inline-block;
+	width: auto !important;
+	padding: 2px 8px;
+	border: 1px solid;
+	background: #fff;
+	border-color: #b0be21;
+	box-shadow: 0 1px 4px -2px rgba(0, 0, 0, 0);
+}
+
+.uiconfig .default-button {
+	font-family: Arial, ç€¹å¬©ç¶‹;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+	display: inline-block;
+	width: auto !important;
+	padding: 2px 8px;
+	border: 1px solid;
+	background: #fff;
+	border-color: #acd0e5;
+	box-shadow: 0 1px 4px -2px rgba(0, 0, 0, 0);
+}
+
+.uiconfig .default-button .v-nativebutton-caption {
+	font-size: 16px;
+	color: #006894;
+	line-height: 22px;
+	font-weight: 700;
+}
+.uiconfig .default-label {
+	font-family: Arial
+	font-size: 16px;
+	letter-spacing: -1px;
+	line-height: 12px;
+	color: #3f4a52;
+}
+
+.uiconfig .default-button:HOVER {
+	border-color: #2ea5d5;
+	background: #2ea5d5;
+	text-decoration: none;
+	cursor: pointer;
+	box-shadow: 0 1px 4px -2px rgba(0, 0, 0, 0.25);
+}
+
+.uiconfig .default-button:HOVER .v-nativebutton-caption {
+	color: #FFF;
+}
+
+
+.uiconfig .v-panel-caption-page-config{
+	color: #ffffff;
+}
+
+.uiconfig .v-panel-caption-field-config{
+	color: #80ff80;
+}
+
+.uiconfig .v-panel-caption {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0 12px;
+	line-height: 36px;
+	border-bottom: none;
+	margin-bottom: 1px;
+	background-color: #80ffff;
+	background-image: -webkit-linear-gradient(top, #5d6068 2%, #595c62 98%);
+	background-image: linear-gradient(to bottom,#5d6068 2%, #595c62 98%);
+	color: #80ffff;
+	font-weight: 400;
+	font-size: 14px;
+	-webkit-box-shadow: inset 0 1px 0 #767676, inset 0 -1px 0 #56595f, 0 0 0 1px #4e5157;
+	box-shadow: inset 0 1px 0 #767676, inset 0 -1px 0 #56595f, 0 0 0 1px #4e5157;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05);
+
+}

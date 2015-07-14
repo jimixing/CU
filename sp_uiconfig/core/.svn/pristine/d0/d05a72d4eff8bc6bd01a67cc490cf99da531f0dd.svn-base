@@ -1,0 +1,67 @@
+package com.ebao.gs.sp.uiconfig;
+
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Window;
+
+public class WarningDialog extends Window {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7772495321119773122L;
+	private String warningMessage;
+	private boolean isOk;
+	public WarningDialog(String warnMessage){
+		this.warningMessage=warnMessage;
+		init();
+	}
+	
+	private void init(){
+		this.setModal(true); 
+		VerticalLayout content = new VerticalLayout();
+        content.addComponent(new Label(warningMessage));
+        content.setMargin(true);
+        setContent(content);
+        
+        // Disable the close button
+        setClosable(false);
+
+        // Trivial logic for closing the sub-window
+        
+        HorizontalLayout horiLayout=new HorizontalLayout();
+        
+        Button ok = new Button("OK");
+        ok.addClickListener(new ClickListener() {
+            public void buttonClick(ClickEvent event) {
+            	isOk=true;
+                close(); // Close the sub-window
+            }
+        });
+        
+        Button Cancel = new Button("Cancel");
+        ok.addClickListener(new ClickListener() {
+            public void buttonClick(ClickEvent event) {
+            	isOk=true;
+                close(); // Close the sub-window
+            }
+        });
+        horiLayout.addComponent(Cancel);
+        
+        content.addComponent(horiLayout);
+	}
+
+	public boolean isOk() {
+		return isOk;
+	}
+
+	public void setOk(boolean isOk) {
+		this.isOk = isOk;
+	}
+	
+
+}
